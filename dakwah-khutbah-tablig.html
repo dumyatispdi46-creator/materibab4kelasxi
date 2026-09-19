@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menebarkan Islam dengan Santun dan Damai — PAI Kelas XI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hijau-tua:#0B3D2E;
+  --hijau:#14713F;
+  --hijau-terang:#1F9D58;
+  --hijau-kabut:#E8F2EA;
+  --mint:#F3F8F4;
+  --krem:#FBF6E9;
+  --emas:#B8891F;
+  --emas-muda:#E3C26B;
+  --tinta:#17241E;
+  --tinta-lembut:#4A5C52;
+  --garis:#D6E4D9;
+  --putih:#FFFFFF;
+  --merah:#B3261E;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(11,61,46,.10);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:inherit;}
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--mint);
+  color:var(--tinta);
+  line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{font-family:'Lora',Georgia,serif;line-height:1.3;margin:0 0 .5em;color:var(--hijau-tua);font-weight:600;}
+h1{font-size:clamp(1.5rem,4.5vw,2.1rem);}
+h2{font-size:clamp(1.25rem,3.6vw,1.65rem);}
+h3{font-size:clamp(1.08rem,3vw,1.25rem);}
+h4{font-size:1rem;}
+p{margin:0 0 1em;}
+a{color:var(--hijau);}
+img{max-width:100%;}
+button{font-family:inherit;}
+:focus-visible{outline:3px solid var(--emas);outline-offset:2px;border-radius:6px;}
+
+/* ====== LOGIN ====== */
+#login{
+  min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px 18px;
+  background:
+    radial-gradient(1200px 500px at 50% -10%, #1F9D58 0%, transparent 60%),
+    linear-gradient(160deg,#0B3D2E 0%,#125B3A 55%,#0B3D2E 100%);
+  position:relative;overflow:hidden;
+}
+#login::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(227,194,107,.10) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(-45deg, rgba(227,194,107,.10) 0 2px, transparent 2px 22px);
+  opacity:.5;pointer-events:none;
+}
+.login-card{
+  position:relative;z-index:1;width:100%;max-width:430px;background:var(--putih);
+  border-radius:20px;padding:30px 26px 26px;box-shadow:0 24px 60px rgba(0,0,0,.35);
+  border-top:6px solid var(--emas);
+}
+.login-bismillah{
+  font-family:'Amiri',serif;font-size:1.5rem;text-align:center;color:var(--hijau);
+  margin:0 0 6px;direction:rtl;
+}
+.login-card h1{text-align:center;font-size:1.35rem;margin-bottom:2px;}
+.login-sub{text-align:center;color:var(--tinta-lembut);font-size:.88rem;margin-bottom:22px;}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--hijau-tua);margin-bottom:6px;}
+.field input{
+  width:100%;padding:12px 14px;border:1.5px solid var(--garis);border-radius:10px;
+  font-size:1rem;font-family:inherit;background:var(--mint);color:var(--tinta);
+}
+.field input:focus{border-color:var(--hijau-terang);background:#fff;outline:none;box-shadow:0 0 0 3px rgba(31,157,88,.18);}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--hijau);color:#fff;border:none;border-radius:10px;
+  padding:12px 20px;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .18s;
+}
+.btn:hover{background:var(--hijau-terang);}
+.btn:active{transform:translateY(1px);}
+.btn-block{width:100%;padding:14px;font-size:1rem;}
+.btn-outline{background:transparent;color:var(--hijau);border:1.5px solid var(--hijau);}
+.btn-outline:hover{background:var(--hijau-kabut);}
+.btn-emas{background:var(--emas);}
+.btn-emas:hover{background:#C99A2E;}
+.btn-kecil{padding:8px 14px;font-size:.85rem;}
+.pesan-error{color:var(--merah);font-size:.85rem;min-height:20px;margin:6px 0 0;font-weight:500;}
+.login-note{margin-top:18px;font-size:.78rem;color:var(--tinta-lembut);text-align:center;border-top:1px dashed var(--garis);padding-top:12px;}
+
+/* ====== HEADER & NAV ====== */
+#app{display:none;}
+.topbar{
+  background:var(--hijau-tua);color:#fff;padding:12px 16px;
+  padding-top:calc(12px + env(safe-area-inset-top,0px));
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;}
+.brand-mark{
+  width:38px;height:38px;flex:0 0 38px;border-radius:9px;background:var(--emas);
+  display:grid;place-items:center;font-family:'Amiri',serif;font-size:1.25rem;color:#0B3D2E;font-weight:700;
+}
+.brand-text strong{display:block;font-size:.95rem;line-height:1.25;font-family:'Lora',serif;}
+.brand-text span{display:block;font-size:.72rem;opacity:.75;}
+.user-chip{display:flex;align-items:center;gap:10px;font-size:.8rem;}
+.user-chip .nama{background:rgba(255,255,255,.12);padding:6px 12px;border-radius:99px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.logout{background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:99px;padding:6px 12px;font-size:.78rem;cursor:pointer;}
+.logout:hover{background:rgba(255,255,255,.15);}
+
+nav.menu{
+  background:var(--hijau);position:sticky;top:0;z-index:50;
+  box-shadow:0 4px 14px rgba(11,61,46,.2);
+}
+.menu-scroll{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:0 6px;}
+.menu-scroll::-webkit-scrollbar{display:none;}
+.menu-scroll button{
+  background:none;border:none;color:rgba(255,255,255,.78);padding:13px 15px;font-size:.85rem;
+  font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s;
+}
+.menu-scroll button:hover{color:#fff;}
+.menu-scroll button.aktif{color:#fff;border-bottom-color:var(--emas-muda);background:rgba(0,0,0,.14);}
+
+main{max-width:900px;margin:0 auto;padding:22px 16px 70px;}
+.panel{display:none;animation:masuk .3s ease;}
+.panel.aktif{display:block;}
+@keyframes masuk{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none;}}
+
+.judul-bab{
+  background:linear-gradient(135deg,var(--hijau-tua),var(--hijau));color:#fff;
+  border-radius:var(--radius);padding:20px 22px;margin-bottom:22px;box-shadow:var(--shadow);
+  border-left:6px solid var(--emas);
+}
+.judul-bab h1,.judul-bab h2{color:#fff;margin-bottom:4px;}
+.judul-bab p{margin:0;opacity:.88;font-size:.9rem;}
+
+.kartu{background:#fff;border:1px solid var(--garis);border-radius:var(--radius);padding:20px 22px;margin-bottom:18px;box-shadow:0 2px 10px rgba(11,61,46,.05);}
+.kartu > :last-child{margin-bottom:0;}
+
+/* Blok dalil bergaya mushaf */
+.dalil{
+  background:var(--krem);border:1px solid var(--emas-muda);border-left:5px solid var(--emas);
+  border-radius:10px;padding:18px 20px;margin:18px 0;
+}
+.dalil .arab{
+  font-family:'Amiri',serif;font-size:clamp(1.35rem,4.6vw,1.75rem);line-height:2.15;
+  direction:rtl;text-align:right;color:#12321F;margin:0 0 12px;
+}
+.dalil .terjemah{font-size:.94rem;color:#3A3020;margin:0 0 8px;font-style:italic;}
+.dalil .sumber{font-size:.8rem;font-weight:700;color:var(--emas);margin:0;}
+.dalil.hadis{background:var(--hijau-kabut);border-color:#A9CDB5;border-left-color:var(--hijau);}
+.dalil.hadis .arab{color:var(--hijau-tua);}
+.dalil.hadis .terjemah{color:#2A3B31;}
+.dalil.hadis .sumber{color:var(--hijau);}
+
+.daftar-isi{background:var(--hijau-kabut);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px;}
+.daftar-isi h3{margin-bottom:8px;font-size:1rem;}
+.daftar-isi ol{margin:0;padding-left:20px;font-size:.9rem;}
+.daftar-isi a{text-decoration:none;color:var(--hijau-tua);}
+.daftar-isi a:hover{text-decoration:underline;}
+
+.nomor-bab{
+  display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;
+  background:var(--hijau);color:#fff;font-size:.9rem;font-weight:700;margin-right:10px;
+  font-family:'Plus Jakarta Sans',sans-serif;vertical-align:middle;
+}
+h2.bab{display:flex;align-items:center;gap:0;margin-top:8px;padding-top:6px;}
+
+ul.isi,ol.isi{padding-left:22px;margin:0 0 1em;}
+ul.isi li,ol.isi li{margin-bottom:7px;}
+
+.tabel-bungkus{overflow-x:auto;margin:16px 0;border:1px solid var(--garis);border-radius:10px;}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.88rem;background:#fff;}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--garis);vertical-align:top;}
+th{background:var(--hijau-tua);color:#fff;font-weight:600;font-size:.85rem;}
+tbody tr:nth-child(even){background:var(--mint);}
+
+.catatan{background:#fff8e6;border:1px solid var(--emas-muda);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:.9rem;}
+.catatan strong{color:var(--emas);}
+.aswaja{background:linear-gradient(135deg,#0B3D2E,#14713F);color:#EAF6EE;border-radius:var(--radius);padding:20px 22px;margin:18px 0;}
+.aswaja h3{color:var(--emas-muda);}
+.aswaja .dalil{background:rgba(255,255,255,.07);border-color:rgba(227,194,107,.5);border-left-color:var(--emas-muda);}
+.aswaja .dalil .arab,.aswaja .dalil .terjemah{color:#F5FBF7;}
+.aswaja .dalil .sumber{color:var(--emas-muda);}
+
+/* ====== TADARUS ====== */
+.tadarus-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;}
+.tadarus-hitung{font-size:.85rem;color:var(--tinta-lembut);font-weight:600;}
+.checklist{list-style:none;padding:0;margin:14px 0 0;}
+.checklist li{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-size:.92rem;}
+.checklist li::before{content:"✓";color:var(--hijau-terang);font-weight:700;}
+
+/* ====== RINGKASAN ====== */
+.peta{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin:16px 0;}
+.peta-item{background:#fff;border:1px solid var(--garis);border-top:4px solid var(--hijau-terang);border-radius:10px;padding:14px 16px;}
+.peta-item h4{margin-bottom:6px;color:var(--hijau);}
+.peta-item p{font-size:.86rem;margin:0;color:var(--tinta-lembut);}
+
+/* ====== PROYEK ====== */
+.proyek{background:#fff;border:1px solid var(--garis);border-radius:var(--radius);margin-bottom:18px;overflow:hidden;}
+.proyek-head{background:var(--hijau-kabut);padding:16px 20px;border-bottom:1px solid var(--garis);}
+.proyek-head h3{margin:0;}
+.proyek-head span{font-size:.78rem;font-weight:700;color:var(--emas);}
+.proyek-body{padding:18px 20px;}
+
+/* ====== KUIS ====== */
+.level-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:20px;}
+.level-kartu{
+  background:#fff;border:1.5px solid var(--garis);border-radius:12px;padding:16px;text-align:center;cursor:pointer;
+  transition:border-color .15s, box-shadow .15s;
+}
+.level-kartu:hover{border-color:var(--hijau-terang);box-shadow:var(--shadow);}
+.level-kartu .lv{font-size:.72rem;font-weight:700;color:var(--emas);}
+.level-kartu h4{margin:4px 0 6px;}
+.level-kartu p{font-size:.8rem;color:var(--tinta-lembut);margin:0 0 8px;}
+.level-kartu .skor{font-size:.8rem;font-weight:700;color:var(--hijau);}
+.level-kartu.lulus{border-color:var(--hijau-terang);background:linear-gradient(#fff,#F1F9F3);}
+
+.soal{background:#fff;border:1px solid var(--garis);border-radius:12px;padding:18px 20px;margin-bottom:14px;}
+.soal-nomor{font-size:.75rem;font-weight:700;color:var(--emas);margin-bottom:6px;}
+.soal-teks{font-weight:600;margin-bottom:12px;color:var(--hijau-tua);}
+.soal-teks .arab{font-family:'Amiri',serif;font-size:1.25rem;direction:rtl;display:block;text-align:right;margin:8px 0;font-weight:400;}
+.opsi{display:block;width:100%;text-align:left;background:var(--mint);border:1.5px solid var(--garis);border-radius:9px;
+  padding:11px 14px;margin-bottom:8px;font-size:.92rem;cursor:pointer;transition:.15s;color:var(--tinta);}
+.opsi:hover:not(:disabled){border-color:var(--hijau-terang);background:var(--hijau-kabut);}
+.opsi:disabled{cursor:default;}
+.opsi.dipilih{border-color:var(--hijau);background:var(--hijau-kabut);font-weight:600;}
+.opsi.benar{border-color:var(--hijau-terang);background:#E3F6E9;font-weight:600;}
+.opsi.salah{border-color:var(--merah);background:#FBE9E7;}
+.opsi .huruf{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;background:#fff;
+  border:1px solid var(--garis);font-weight:700;font-size:.78rem;margin-right:9px;vertical-align:middle;}
+.pembahasan{margin-top:10px;padding:11px 14px;border-radius:9px;background:var(--hijau-kabut);font-size:.87rem;border-left:4px solid var(--hijau);}
+.pembahasan.keliru{background:#FBE9E7;border-left-color:var(--merah);}
+
+.bar{height:9px;background:var(--garis);border-radius:99px;overflow:hidden;margin:10px 0 16px;}
+.bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--hijau),var(--hijau-terang));width:0;transition:width .3s;}
+
+.hasil{background:#fff;border:2px solid var(--hijau-terang);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow);}
+.hasil .nilai{font-family:'Lora',serif;font-size:3.2rem;font-weight:700;color:var(--hijau);line-height:1;}
+.hasil .predikat{font-weight:700;margin:6px 0 4px;font-size:1.05rem;}
+.hasil .detail{color:var(--tinta-lembut);font-size:.9rem;margin-bottom:16px;}
+.hasil .tombol{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+.aksi-bawah{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:16px;}
+
+.sembunyi{display:none!important;}
+footer.kaki{text-align:center;font-size:.78rem;color:var(--tinta-lembut);padding:22px 16px calc(22px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--garis);background:#fff;}
+footer.kaki .arab{font-family:'Amiri',serif;font-size:1.1rem;color:var(--hijau);direction:rtl;display:block;margin-bottom:6px;}
+
+@media (max-width:520px){
+  .kartu,.judul-bab{padding:16px;}
+  .proyek-body,.proyek-head{padding:14px 16px;}
+  main{padding:16px 12px 60px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<section id="login">
+  <form class="login-card" id="formLogin" autocomplete="off">
+    <p class="login-bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <h1>Menebarkan Islam dengan Santun dan Damai</h1>
+    <p class="login-sub">Dakwah, Khutbah, dan Tablig · PAI Kelas XI<br>SMA Negeri 1 Pronojiwo</p>
+
+    <div class="field">
+      <label for="inNama">Nama</label>
+      <input id="inNama" type="text" placeholder="Ketik nama lengkapmu" required>
+    </div>
+    <div class="field">
+      <label for="inKelas">Kelas</label>
+      <input id="inKelas" type="text" placeholder="Contoh: XI-1" required>
+    </div>
+    <div class="field">
+      <label for="inSandi">Password</label>
+      <input id="inSandi" type="password" placeholder="Masukkan password kelas" required>
+    </div>
+    <p class="pesan-error" id="errLogin"></p>
+    <button class="btn btn-block" type="submit">Mulai belajar</button>
+    <p class="login-note">Password diberikan oleh guru pengampu. Isi nama dan kelas dengan benar karena akan tercetak pada hasil evaluasi.</p>
+  </form>
+</section>
+
+<!-- ============ APLIKASI ============ -->
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">د</div>
+      <div class="brand-text">
+        <strong>Dakwah, Khutbah &amp; Tablig</strong>
+        <span>PAI &amp; Budi Pekerti · Kelas XI</span>
+      </div>
+    </div>
+    <div class="user-chip">
+      <span class="nama" id="chipUser">—</span>
+      <button class="logout" id="btnKeluar">Keluar</button>
+    </div>
+  </header>
+
+  <nav class="menu">
+    <div class="menu-scroll" id="menuScroll">
+      <button data-panel="tadarus" class="aktif">Tadarus</button>
+      <button data-panel="tujuan">Tujuan</button>
+      <button data-panel="materi">Materi Lengkap</button>
+      <button data-panel="ringkasan">Ringkasan</button>
+      <button data-panel="proyek">Tugas Proyek</button>
+      <button data-panel="kuis">Kuis 5 Level</button>
+      <button data-panel="latihan">Latihan</button>
+      <button data-panel="evaluasi">Evaluasi</button>
+    </div>
+  </nav>
+
+  <main id="konten">
+<!-- ===== TADARUS ===== -->
+<section class="panel aktif" id="p-tadarus">
+  <div class="judul-bab">
+    <h1>Tadarus Pembuka</h1>
+    <p>Mari awali pembelajaran dengan membaca dan menyimak ayat-ayat pilihan tentang dakwah yang santun.</p>
+  </div>
+
+  <div class="kartu">
+    <h3>Adab sebelum tadarus</h3>
+    <ul class="checklist">
+      <li>Berwudu dan menghadap kiblat jika memungkinkan.</li>
+      <li>Membaca ta'awuz dan basmalah.</li>
+      <li>Membaca dengan tartil sesuai kaidah tajwid, tidak tergesa-gesa.</li>
+      <li>Menyimak dengan khusyuk ketika teman membaca.</li>
+      <li>Merenungkan makna ayat, lalu berniat mengamalkannya.</li>
+    </ul>
+    <div class="dalil" style="margin-bottom:0">
+      <p class="arab">اَعُوْذُ بِاللّٰهِ مِنَ الشَّيْطٰنِ الرَّجِيْمِ ۞ بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <p class="terjemah">"Aku berlindung kepada Allah dari setan yang terkutuk. Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang."</p>
+      <p class="sumber">Ta'awuz &amp; Basmalah</p>
+    </div>
+  </div>
+
+  <div class="kartu" id="tadarusBox"></div>
+
+  <div class="kartu" style="text-align:center">
+    <h3>Doa setelah tadarus</h3>
+    <div class="dalil hadis" style="text-align:right">
+      <p class="arab">اَللّٰهُمَّ ارْحَمْنَا بِالْقُرْآنِ وَاجْعَلْهُ لَنَا اِمَامًا وَنُوْرًا وَهُدًى وَرَحْمَةً</p>
+      <p class="terjemah" style="text-align:left">"Ya Allah, rahmatilah kami dengan Al-Qur'an, jadikanlah ia bagi kami sebagai pemimpin, cahaya, petunjuk, dan rahmat."</p>
+      <p class="sumber" style="text-align:left">Doa Khatmul Qur'an</p>
+    </div>
+    <button class="btn" data-goto="tujuan">Lanjut ke tujuan pembelajaran</button>
+  </div>
+</section>
+
+<!-- ===== TUJUAN ===== -->
+<section class="panel" id="p-tujuan">
+  <div class="judul-bab">
+    <h1>Tujuan Pembelajaran</h1>
+    <p>Bab: Menebarkan Islam dengan Santun dan Damai melalui Dakwah, Khutbah, dan Tablig</p>
+  </div>
+
+  <div class="kartu">
+    <h3>Setelah mempelajari bab ini, kamu diharapkan mampu:</h3>
+    <ol class="isi">
+      <li><strong>Menganalisis</strong> ketentuan dakwah, khutbah, dan tablig beserta dalil dan perbedaannya.</li>
+      <li><strong>Menyusun</strong> teks khutbah dengan tema nilai-nilai Islam <em>rahmatan lil 'alamin</em>.</li>
+      <li><strong>Menerapkan</strong> ketentuan dakwah, khutbah, dan tablig dalam praktik di sekolah maupun masyarakat.</li>
+      <li><strong>Membiasakan</strong> sikap menebarkan Islam <em>rahmatan lil 'alamin</em> dalam kehidupan sehari-hari.</li>
+    </ol>
+  </div>
+
+  <div class="kartu">
+    <h3>Peta alur belajar</h3>
+    <div class="peta">
+      <div class="peta-item"><h4>1. Tadarus</h4><p>Membuka pembelajaran dengan ayat-ayat pilihan.</p></div>
+      <div class="peta-item"><h4>2. Materi lengkap</h4><p>Sembilan sub-bab dengan dalil Al-Qur'an dan hadis.</p></div>
+      <div class="peta-item"><h4>3. Ringkasan</h4><p>Intisari materi untuk mengulang cepat.</p></div>
+      <div class="peta-item"><h4>4. Tugas proyek</h4><p>Tiga proyek: teks khutbah, konten dakwah, observasi.</p></div>
+      <div class="peta-item"><h4>5. Kuis bertingkat</h4><p>Lima level, tiap level lima soal dengan pembahasan.</p></div>
+      <div class="peta-item"><h4>6. Latihan &amp; evaluasi</h4><p>10 soal latihan dan 10 soal evaluasi bernilai otomatis.</p></div>
+    </div>
+  </div>
+
+  <div class="kartu">
+    <h3>Pendekatan yang digunakan</h3>
+    <p>Seluruh pembahasan fikih dan akidah dalam bab ini mengikuti manhaj <strong>Ahlussunnah wal Jama'ah</strong>: berakidah <strong>Asy'ariyah</strong> (dan Maturidiyah), berfikih pada salah satu mazhab empat dengan penekanan pada <strong>mazhab Syafi'i</strong> yang berlaku di Indonesia, serta bertasawuf mengikuti Imam al-Junaid al-Baghdadi dan Imam al-Gazali.</p>
+    <p>Karakter dakwahnya bertumpu pada empat prinsip Aswaja: <em>tawassuth</em> (moderat), <em>tawazun</em> (seimbang), <em>i'tidal</em> (tegak lurus dan adil), dan <em>tasamuh</em> (toleran).</p>
+    <div style="text-align:center;margin-top:8px"><button class="btn" data-goto="materi">Masuk ke materi lengkap</button></div>
+  </div>
+</section>
+<!-- ===== MATERI ===== -->
+<section class="panel" id="p-materi">
+  <div class="judul-bab">
+    <h1>Materi Lengkap</h1>
+    <p>Menebarkan Islam dengan Santun dan Damai melalui Dakwah, Khutbah, dan Tablig</p>
+  </div>
+
+  <div class="daftar-isi">
+    <h3>Daftar isi</h3>
+    <ol>
+      <li><a href="#m1">Islam sebagai Rahmatan lil 'Alamin</a></li>
+      <li><a href="#m2">Pengertian Dakwah, Khutbah, dan Tablig</a></li>
+      <li><a href="#m3">Dasar Hukum dan Dalil Kewajibannya</a></li>
+      <li><a href="#m4">Ketentuan Dakwah</a></li>
+      <li><a href="#m5">Ketentuan Khutbah</a></li>
+      <li><a href="#m6">Ketentuan Tablig</a></li>
+      <li><a href="#m7">Perbedaan Dakwah, Khutbah, dan Tablig</a></li>
+      <li><a href="#m8">Dakwah ala Ahlussunnah wal Jama'ah Asy'ariyah</a></li>
+      <li><a href="#m9">Praktik Menyusun Teks Khutbah</a></li>
+      <li><a href="#m10">Hikmah dan Pembiasaan Sikap</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <div class="kartu" id="m1">
+    <h2 class="bab"><span class="nomor-bab">1</span>Islam sebagai Rahmatan lil 'Alamin</h2>
+    <p>Islam datang bukan untuk menakut-nakuti, melainkan untuk menebar rahmat bagi seluruh alam. Nabi Muhammad saw. diutus sebagai pembawa kasih sayang, bukan pembawa kebencian. Karena itu, seluruh aktivitas menyampaikan ajaran Islam — baik dakwah, khutbah, maupun tablig — harus memancarkan wajah Islam yang ramah, santun, dan damai.</p>
+
+    <div class="dalil">
+      <p class="arab">وَمَآ اَرْسَلْنٰكَ اِلَّا رَحْمَةً لِّلْعٰلَمِيْنَ</p>
+      <p class="terjemah">"Dan Kami tidak mengutus engkau (Muhammad) melainkan untuk (menjadi) rahmat bagi seluruh alam."</p>
+      <p class="sumber">QS. Al-Anbiya' [21]: 107</p>
+    </div>
+
+    <p>Rahmat itu tampak dalam akhlak Rasulullah saw. yang lembut. Bahkan Allah menegaskan bahwa kelembutan hati beliau adalah sebab orang-orang mau berkumpul dan menerima dakwah.</p>
+
+    <div class="dalil">
+      <p class="arab">فَبِمَا رَحْمَةٍ مِّنَ اللّٰهِ لِنْتَ لَهُمْ ۚ وَلَوْ كُنْتَ فَظًّا غَلِيْظَ الْقَلْبِ لَانْفَضُّوْا مِنْ حَوْلِكَ ۖ فَاعْفُ عَنْهُمْ وَاسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى الْاَمْرِ</p>
+      <p class="terjemah">"Maka berkat rahmat Allah engkau (Muhammad) berlaku lemah lembut terhadap mereka. Sekiranya engkau bersikap keras dan berhati kasar, tentulah mereka menjauhkan diri dari sekitarmu. Karena itu maafkanlah mereka dan mohonkanlah ampunan untuk mereka, dan bermusyawarahlah dengan mereka dalam urusan itu."</p>
+      <p class="sumber">QS. Ali 'Imran [3]: 159</p>
+    </div>
+
+    <div class="dalil hadis">
+      <p class="arab">اِنَّمَا بُعِثْتُ لِاُتَمِّمَ مَكَارِمَ الْاَخْلَاقِ</p>
+      <p class="terjemah">"Sesungguhnya aku diutus hanyalah untuk menyempurnakan kemuliaan akhlak."</p>
+      <p class="sumber">HR. Ahmad dan al-Baihaqi</p>
+    </div>
+
+    <div class="catatan"><strong>Inti sub-bab:</strong> misi kenabian adalah rahmat dan penyempurnaan akhlak. Maka cara berdakwah yang kasar, mencaci, atau memaksa bertentangan dengan misi Islam itu sendiri.</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="kartu" id="m2">
+    <h2 class="bab"><span class="nomor-bab">2</span>Pengertian Dakwah, Khutbah, dan Tablig</h2>
+
+    <h3>a. Dakwah</h3>
+    <p>Secara bahasa, dakwah berasal dari kata <span style="font-family:Amiri,serif;font-size:1.15rem">دَعَا - يَدْعُوْ - دَعْوَةً</span> yang berarti menyeru, memanggil, atau mengajak. Secara istilah, dakwah adalah kegiatan mengajak manusia kepada jalan Allah dengan cara yang baik agar mereka beriman dan mengamalkan ajaran Islam, serta memperoleh kebahagiaan dunia dan akhirat.</p>
+
+    <div class="dalil">
+      <p class="arab">وَمَنْ اَحْسَنُ قَوْلًا مِّمَّنْ دَعَآ اِلَى اللّٰهِ وَعَمِلَ صَالِحًا وَّقَالَ اِنَّنِيْ مِنَ الْمُسْلِمِيْنَ</p>
+      <p class="terjemah">"Dan siapakah yang lebih baik perkataannya daripada orang yang menyeru kepada Allah dan mengerjakan kebajikan serta berkata, 'Sungguh, aku termasuk orang-orang muslim (yang berserah diri)?'"</p>
+      <p class="sumber">QS. Fussilat [41]: 33</p>
+    </div>
+
+    <h3>b. Khutbah</h3>
+    <p>Secara bahasa, khutbah berasal dari <span style="font-family:Amiri,serif;font-size:1.15rem">خَطَبَ - يَخْطُبُ - خُطْبَةً</span> yang berarti berpidato atau menyampaikan pesan. Secara istilah, khutbah adalah kegiatan menyampaikan nasihat dan pesan takwa dengan syarat dan rukun tertentu, dilaksanakan pada waktu dan tempat tertentu, serta berkaitan langsung dengan keabsahan ibadah — seperti khutbah Jumat yang menjadi syarat sahnya salat Jumat.</p>
+
+    <h3>c. Tablig</h3>
+    <p>Secara bahasa, tablig berasal dari <span style="font-family:Amiri,serif;font-size:1.15rem">بَلَّغَ - يُبَلِّغُ - تَبْلِيْغًا</span> yang berarti menyampaikan. Secara istilah, tablig adalah menyampaikan ajaran Islam yang diterima dari Allah dan Rasul-Nya kepada umat manusia secara utuh, tanpa menambah, mengurangi, atau menyembunyikannya. Orang yang melakukannya disebut <em>mubalig</em>.</p>
+
+    <div class="dalil">
+      <p class="arab">يٰٓاَيُّهَا الرَّسُوْلُ بَلِّغْ مَآ اُنْزِلَ اِلَيْكَ مِنْ رَّبِّكَ ۗ وَاِنْ لَّمْ تَفْعَلْ فَمَا بَلَّغْتَ رِسَالَتَهٗ ۗ وَاللّٰهُ يَعْصِمُكَ مِنَ النَّاسِ</p>
+      <p class="terjemah">"Wahai Rasul! Sampaikanlah apa yang diturunkan Tuhanmu kepadamu. Jika tidak engkau lakukan (apa yang diperintahkan itu) berarti engkau tidak menyampaikan amanat-Nya. Dan Allah memelihara engkau dari (gangguan) manusia."</p>
+      <p class="sumber">QS. Al-Ma'idah [5]: 67</p>
+    </div>
+
+    <div class="dalil hadis">
+      <p class="arab">بَلِّغُوْا عَنِّيْ وَلَوْ اٰيَةً</p>
+      <p class="terjemah">"Sampaikanlah dariku walau hanya satu ayat."</p>
+      <p class="sumber">HR. al-Bukhari dari 'Abdullah bin 'Amr</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="kartu" id="m3">
+    <h2 class="bab"><span class="nomor-bab">3</span>Dasar Hukum dan Dalil Kewajibannya</h2>
+    <p>Jumhur ulama menyatakan bahwa berdakwah dan beramar makruf nahi mungkar hukumnya <strong>fardu kifayah</strong>: apabila telah ada sekelompok orang yang menunaikannya dengan memadai, gugurlah kewajiban bagi yang lain. Namun ia menjadi <strong>fardu 'ain</strong> bagi seseorang ketika kemungkaran terjadi di hadapannya dan hanya ia yang mampu mengubahnya, atau ketika ia satu-satunya orang yang memiliki ilmu tentang masalah tersebut.</p>
+
+    <div class="dalil">
+      <p class="arab">وَلْتَكُنْ مِّنْكُمْ اُمَّةٌ يَّدْعُوْنَ اِلَى الْخَيْرِ وَيَأْمُرُوْنَ بِالْمَعْرُوْفِ وَيَنْهَوْنَ عَنِ الْمُنْكَرِ ۗ وَاُولٰۤىِٕكَ هُمُ الْمُفْلِحُوْنَ</p>
+      <p class="terjemah">"Dan hendaklah di antara kamu ada segolongan orang yang menyeru kepada kebajikan, menyuruh (berbuat) yang makruf, dan mencegah dari yang mungkar. Dan mereka itulah orang-orang yang beruntung."</p>
+      <p class="sumber">QS. Ali 'Imran [3]: 104</p>
+    </div>
+
+    <p>Huruf <em>min</em> pada lafal <span style="font-family:Amiri,serif">مِنْكُمْ</span> oleh sebagian mufasir dipahami sebagai <em>lit-tab'idh</em> (menunjukkan sebagian), sehingga melahirkan kesimpulan fardu kifayah. Kewajiban itu bertingkat sesuai kemampuan, sebagaimana sabda Nabi saw.</p>
+
+    <div class="dalil hadis">
+      <p class="arab">مَنْ رَاٰى مِنْكُمْ مُنْكَرًا فَلْيُغَيِّرْهُ بِيَدِهٖ، فَاِنْ لَّمْ يَسْتَطِعْ فَبِلِسَانِهٖ، فَاِنْ لَّمْ يَسْتَطِعْ فَبِقَلْبِهٖ، وَذٰلِكَ اَضْعَفُ الْاِيْمَانِ</p>
+      <p class="terjemah">"Barangsiapa di antara kalian melihat kemungkaran, hendaklah ia mengubahnya dengan tangannya. Jika tidak mampu, maka dengan lisannya. Jika tidak mampu juga, maka dengan hatinya, dan itulah selemah-lemah iman."</p>
+      <p class="sumber">HR. Muslim dari Abu Sa'id al-Khudri</p>
+    </div>
+
+    <div class="catatan">
+      <strong>Catatan penting Aswaja:</strong> mengubah dengan <em>tangan</em> adalah wewenang pemerintah atau pemegang otoritas, bukan tindakan main hakim sendiri. Ulama menegaskan kaidah bahwa mencegah kemungkaran tidak boleh melahirkan kemungkaran yang lebih besar. Pelajar cukup berperan pada tingkat <em>lisan</em> (menasihati dengan santun) dan <em>hati</em> (tidak menyetujui keburukan).
+    </div>
+
+    <div class="dalil">
+      <p class="arab">وَالْعَصْرِۙ اِنَّ الْاِنْسَانَ لَفِيْ خُسْرٍۙ اِلَّا الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ وَتَوَاصَوْا بِالْحَقِّ ەۙ وَتَوَاصَوْا بِالصَّبْرِ</p>
+      <p class="terjemah">"Demi masa. Sungguh, manusia berada dalam kerugian, kecuali orang-orang yang beriman dan mengerjakan kebajikan serta saling menasihati untuk kebenaran dan saling menasihati untuk kesabaran."</p>
+      <p class="sumber">QS. Al-'Asr [103]: 1-3</p>
+    </div>
+
+    <div class="dalil hadis">
+      <p class="arab">اَلدِّيْنُ النَّصِيْحَةُ</p>
+      <p class="terjemah">"Agama itu adalah nasihat."</p>
+      <p class="sumber">HR. Muslim dari Tamim ad-Dari</p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="kartu" id="m4">
+    <h2 class="bab"><span class="nomor-bab">4</span>Ketentuan Dakwah</h2>
+
+    <h3>a. Syarat dan sifat seorang dai</h3>
+    <ol class="isi">
+      <li>Muslim, berakal sehat, dan balig.</li>
+      <li>Memiliki ilmu yang memadai tentang materi yang disampaikan — berdakwah tanpa ilmu lebih banyak merusak daripada memperbaiki.</li>
+      <li>Mengamalkan lebih dahulu apa yang ia serukan (<em>ibda' binafsik</em>).</li>
+      <li>Berakhlak mulia, sabar, lapang dada, dan tidak mudah tersinggung.</li>
+      <li>Ikhlas karena Allah, bukan mencari popularitas, pujian, atau keuntungan duniawi.</li>
+      <li>Memahami kondisi dan latar belakang orang yang didakwahi (<em>mad'u</em>).</li>
+    </ol>
+
+    <h3>b. Tiga metode dakwah dalam Al-Qur'an</h3>
+    <div class="dalil">
+      <p class="arab">اُدْعُ اِلٰى سَبِيْلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ وَجَادِلْهُمْ بِالَّتِيْ هِيَ اَحْسَنُ ۗ اِنَّ رَبَّكَ هُوَ اَعْلَمُ بِمَنْ ضَلَّ عَنْ سَبِيْلِهٖ وَهُوَ اَعْلَمُ بِالْمُهْتَدِيْنَ</p>
+      <p class="terjemah">"Serulah (manusia) ke jalan Tuhanmu dengan hikmah dan pengajaran yang baik, dan berdebatlah dengan mereka dengan cara yang lebih baik. Sesungguhnya Tuhanmu, Dialah yang lebih mengetahui siapa yang sesat dari jalan-Nya dan Dialah yang lebih mengetahui siapa yang mendapat petunjuk."</p>
+      <p class="sumber">QS. An-Nahl [16]: 125</p>
+    </div>
+    <div class="tabel-bungkus">
+      <table>
+        <thead><tr><th>Metode</th><th>Makna</th><th>Sasaran dan penerapan</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bil-hikmah</strong></td><td>Perkataan dan tindakan yang tepat, bijaksana, sesuai kadar akal pendengar</td><td>Kalangan terpelajar dan kritis; butuh argumen yang kuat dan pilihan waktu yang tepat</td></tr>
+          <tr><td><strong>Mau'izah hasanah</strong></td><td>Nasihat yang baik, menyentuh hati, disertai keteladanan</td><td>Masyarakat umum; disampaikan dengan bahasa sederhana dan penuh kasih</td></tr>
+          <tr><td><strong>Mujadalah billati hiya ahsan</strong></td><td>Berdiskusi dan berdebat dengan cara yang paling baik, tanpa merendahkan lawan bicara</td><td>Mereka yang masih ragu atau berbeda pendapat; tujuannya mencari kebenaran, bukan mencari kemenangan</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>c. Macam dakwah dilihat dari sarananya</h3>
+    <ul class="isi">
+      <li><strong>Dakwah bil-lisan</strong> — ceramah, pengajian, diskusi, nasihat langsung.</li>
+      <li><strong>Dakwah bil-hal</strong> — melalui perbuatan nyata: keteladanan akhlak, santunan sosial, kerja bakti, membantu korban bencana.</li>
+      <li><strong>Dakwah bil-qalam</strong> — melalui tulisan: buku, artikel, poster, konten media sosial, video edukatif.</li>
+    </ul>
+
+    <h3>d. Etika berdakwah</h3>
+    <div class="dalil">
+      <p class="arab">فَقُوْلَا لَهٗ قَوْلًا لَّيِّنًا لَّعَلَّهٗ يَتَذَكَّرُ اَوْ يَخْشٰى</p>
+      <p class="terjemah">"Maka berbicaralah kamu berdua kepadanya (Fir'aun) dengan kata-kata yang lemah lembut, mudah-mudahan dia sadar atau takut."</p>
+      <p class="sumber">QS. Taha [20]: 44</p>
+    </div>
+    <p>Jika kepada Fir'aun saja Nabi Musa a.s. dan Nabi Harun a.s. diperintahkan berkata lembut, apalagi kepada sesama muslim dan tetangga kita sendiri.</p>
+    <ul class="isi">
+      <li>Tidak memaksa; hidayah adalah hak Allah.</li>
+      <li>Tidak mencela sesembahan atau keyakinan orang lain agar tidak memicu permusuhan (QS. Al-An'am [6]: 108).</li>
+      <li>Menghindari ujaran kebencian, hoaks, dan provokasi.</li>
+      <li>Menjaga kehormatan orang yang dinasihati: menegur empat mata, memuji di depan umum.</li>
+      <li>Memilih waktu dan cara yang tepat, tidak memberatkan pendengar.</li>
+    </ul>
+
+    <div class="dalil">
+      <p class="arab">لَآ اِكْرَاهَ فِى الدِّيْنِ ۗ قَدْ تَّبَيَّنَ الرُّشْدُ مِنَ الْغَيِّ</p>
+      <p class="terjemah">"Tidak ada paksaan dalam (menganut) agama (Islam), sesungguhnya telah jelas (perbedaan) antara jalan yang benar dengan jalan yang sesat."</p>
+      <p class="sumber">QS. Al-Baqarah [2]: 256</p>
+    </div>
+
+    <div class="dalil hadis">
+      <p class="arab">يَسِّرُوْا وَلَا تُعَسِّرُوْا، وَبَشِّرُوْا وَلَا تُنَفِّرُوْا</p>
+      <p class="terjemah">"Permudahlah dan jangan mempersulit, berilah kabar gembira dan jangan membuat orang lari (menjauh)."</p>
+      <p class="sumber">HR. al-Bukhari dan Muslim dari Anas bin Malik</p>
+    </div>
+
+    <div class="dalil hadis">
+      <p class="arab">مَنْ دَلَّ عَلٰى خَيْرٍ فَلَهٗ مِثْلُ اَجْرِ فَاعِلِهٖ</p>
+      <p class="terjemah">"Barangsiapa menunjukkan kepada kebaikan, maka baginya pahala seperti pahala orang yang melakukannya."</p>
+      <p class="sumber">HR. Muslim dari Abu Mas'ud al-Ansari</p>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="kartu" id="m5">
+    <h2 class="bab"><span class="nomor-bab">5</span>Ketentuan Khutbah</h2>
+    <p>Pembahasan berikut mengikuti <strong>mazhab Syafi'i</strong>, mazhab yang dianut mayoritas umat Islam Indonesia.</p>
+
+    <h3>a. Macam-macam khutbah</h3>
+    <ul class="isi">
+      <li>Khutbah Jumat (wajib, menjadi syarat sah salat Jumat)</li>
+      <li>Khutbah Idulfitri dan Iduladha (sunah, setelah salat)</li>
+      <li>Khutbah salat gerhana matahari dan bulan (<em>kusuf</em> dan <em>khusuf</em>)</li>
+      <li>Khutbah salat istisqa (memohon hujan)</li>
+      <li>Khutbah wukuf di Arafah dan khutbah nikah</li>
+    </ul>
+
+    <h3>b. Syarat khatib</h3>
+    <ol class="isi">
+      <li>Islam, balig, berakal sehat.</li>
+      <li>Laki-laki (untuk khutbah Jumat).</li>
+      <li>Suci dari hadas besar dan kecil serta najis pada badan, pakaian, dan tempat.</li>
+      <li>Menutup aurat dan berpakaian rapi serta sopan.</li>
+      <li>Fasih membaca ayat Al-Qur'an dan hadis.</li>
+      <li>Memahami rukun, syarat, dan sunah khutbah.</li>
+      <li>Berakhlak baik dan tidak tercela di mata masyarakat.</li>
+    </ol>
+
+    <h3>c. Syarat khutbah Jumat</h3>
+    <ol class="isi">
+      <li>Dilaksanakan <strong>setelah masuk waktu Zuhur</strong>.</li>
+      <li>Dilakukan <strong>sebelum</strong> pelaksanaan salat Jumat.</li>
+      <li>Khatib <strong>berdiri</strong> jika mampu.</li>
+      <li><strong>Duduk sejenak</strong> di antara dua khutbah.</li>
+      <li>Suara khatib terdengar oleh jamaah (menurut Syafi'iyah, minimal empat puluh orang yang sah Jumatnya).</li>
+      <li><strong>Berkesinambungan</strong> (<em>muwalah</em>) antara rukun-rukun khutbah, antara dua khutbah, dan antara khutbah dengan salat.</li>
+      <li>Rukun-rukunnya disampaikan dalam <strong>bahasa Arab</strong>; adapun nasihat dan uraiannya boleh memakai bahasa yang dipahami jamaah.</li>
+    </ol>
+
+    <h3>d. Lima rukun khutbah Jumat</h3>
+    <div class="tabel-bungkus">
+      <table>
+        <thead><tr><th>No</th><th>Rukun</th><th>Keterangan</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Memuji Allah (<span style="font-family:Amiri,serif">اَلْحَمْدُ لِلّٰهِ</span>)</td><td>Wajib pada khutbah pertama dan kedua</td></tr>
+          <tr><td>2</td><td>Membaca selawat kepada Nabi saw.</td><td>Wajib pada kedua khutbah</td></tr>
+          <tr><td>3</td><td>Berwasiat takwa</td><td>Wajib pada kedua khutbah; inilah inti pesan khutbah</td></tr>
+          <tr><td>4</td><td>Membaca ayat Al-Qur'an</td><td>Pada salah satu khutbah, diutamakan khutbah pertama</td></tr>
+          <tr><td>5</td><td>Mendoakan kaum mukminin dan mukminat</td><td>Khusus pada khutbah kedua</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dalil">
+      <p class="arab">يٰٓاَيُّهَا الَّذِيْنَ اٰمَنُوا اتَّقُوا اللّٰهَ حَقَّ تُقٰتِهٖ وَلَا تَمُوْتُنَّ اِلَّا وَاَنْتُمْ مُّسْلِمُوْنَ</p>
+      <p class="terjemah">"Wahai orang-orang yang beriman! Bertakwalah kepada Allah dengan sebenar-benar takwa kepada-Nya dan janganlah kamu mati kecuali dalam keadaan muslim."</p>
+      <p class="sumber">QS. Ali 'Imran [3]: 102 — ayat wasiat takwa yang lazim dibaca khatib</p>
+    </div>
+
+    <h3>e. Sunah-sunah khutbah</h3>
+    <ul class="isi">
+      <li>Dilakukan di atas mimbar atau tempat yang lebih tinggi.</li>
+      <li>Mengucapkan salam ketika naik mimbar, lalu duduk saat azan dikumandangkan.</li>
+      <li>Menyampaikan dengan suara jelas, lantang, dan tidak bertele-tele.</li>
+      <li>Memegang tongkat dengan tangan kiri (menurut sebagian ulama Syafi'iyah).</li>
+      <li>Menghadap jamaah dan menjaga pandangan tetap lurus.</li>
+      <li>Membaca surah al-Ikhlas ketika duduk di antara dua khutbah.</li>
+      <li>Memendekkan khutbah dan memanjangkan salat.</li>
+    </ul>
+
+    <div class="dalil hadis">
+      <p class="arab">اِنَّ طُوْلَ صَلَاةِ الرَّجُلِ وَقِصَرَ خُطْبَتِهٖ مَئِنَّةٌ مِّنْ فِقْهِهٖ</p>
+      <p class="terjemah">"Sesungguhnya panjangnya salat seseorang dan pendeknya khutbahnya merupakan tanda kedalaman pemahamannya (terhadap agama)."</p>
+      <p class="sumber">HR. Muslim dari 'Ammar bin Yasir</p>
+    </div>
+
+    <h3>f. Adab jamaah ketika khutbah berlangsung</h3>
+    <div class="dalil hadis">
+      <p class="arab">اِذَا قُلْتَ لِصَاحِبِكَ اَنْصِتْ يَوْمَ الْجُمُعَةِ وَالْاِمَامُ يَخْطُبُ فَقَدْ لَغَوْتَ</p>
+      <p class="terjemah">"Jika engkau berkata kepada temanmu 'diamlah' pada hari Jumat sementara imam sedang berkhutbah, sungguh engkau telah berbuat sia-sia."</p>
+      <p class="sumber">HR. al-Bukhari dan Muslim dari Abu Hurairah</p>
+    </div>
+    <p>Menegur teman yang berbicara saja dinilai sia-sia, apalagi mengobrol, bermain gawai, atau tidur saat khutbah. Jamaah wajib menyimak dengan tenang.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="kartu" id="m6">
+    <h2 class="bab"><span class="nomor-bab">6</span>Ketentuan Tablig</h2>
+    <p>Tablig menekankan sisi <strong>penyampaian pesan secara utuh dan jujur</strong>. Seorang mubalig adalah penyambung lidah risalah, sehingga ia dituntut menjaga keaslian isi pesan, bukan menambah atau mengurangi menurut seleranya.</p>
+
+    <h3>a. Syarat mubalig</h3>
+    <ol class="isi">
+      <li>Islam, balig, dan berakal.</li>
+      <li>Menguasai ajaran Islam yang akan disampaikan beserta dalilnya.</li>
+      <li>Menyampaikan apa adanya, tidak menyembunyikan kebenaran.</li>
+      <li>Santun, sabar, dan tidak mudah marah ketika ditolak.</li>
+      <li>Menjadi teladan dalam ucapan dan perbuatan.</li>
+    </ol>
+
+    <h3>b. Etika tablig</h3>
+    <ul class="isi">
+      <li>Menggunakan bahasa yang mudah dipahami pendengar.</li>
+      <li>Memilih materi yang sesuai kebutuhan dan tingkat pemahaman jamaah.</li>
+      <li>Tidak menyinggung perasaan, tidak menjelek-jelekkan kelompok lain.</li>
+      <li>Memverifikasi sumber informasi agar tidak menyebarkan berita bohong (QS. Al-Hujurat [49]: 6).</li>
+      <li>Menyampaikan ilmu tanpa menyembunyikannya karena kepentingan pribadi.</li>
+    </ul>
+
+    <div class="catatan"><strong>Peringatan:</strong> menyampaikan sesuatu atas nama Nabi saw. tanpa memastikan kesahihannya adalah bahaya besar. Rasulullah saw. bersabda, <span style="font-family:Amiri,serif">مَنْ كَذَبَ عَلَيَّ مُتَعَمِّدًا فَلْيَتَبَوَّأْ مَقْعَدَهٗ مِنَ النَّارِ</span> — "Barangsiapa sengaja berdusta atas namaku, hendaklah ia bersiap menempati tempat duduknya di neraka." (HR. al-Bukhari dan Muslim)</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="kartu" id="m7">
+    <h2 class="bab"><span class="nomor-bab">7</span>Perbedaan Dakwah, Khutbah, dan Tablig</h2>
+    <div class="tabel-bungkus">
+      <table>
+        <thead><tr><th>Aspek</th><th>Dakwah</th><th>Khutbah</th><th>Tablig</th></tr></thead>
+        <tbody>
+          <tr><td>Makna</td><td>Mengajak kepada jalan Allah</td><td>Pidato keagamaan dengan syarat dan rukun</td><td>Menyampaikan ajaran secara utuh</td></tr>
+          <tr><td>Pelaku</td><td>Dai / daiyah</td><td>Khatib</td><td>Mubalig / mubaligah</td></tr>
+          <tr><td>Waktu</td><td>Kapan saja</td><td>Terikat waktu tertentu (mis. setelah masuk waktu Zuhur di hari Jumat)</td><td>Kapan saja</td></tr>
+          <tr><td>Tempat</td><td>Di mana saja</td><td>Umumnya di masjid atau tempat salat</td><td>Di mana saja</td></tr>
+          <tr><td>Rukun &amp; syarat</td><td>Tidak terikat rukun khusus</td><td>Terikat rukun dan syarat yang baku</td><td>Tidak terikat rukun khusus</td></tr>
+          <tr><td>Hukum</td><td>Fardu kifayah</td><td>Wajib untuk khutbah Jumat; sunah untuk khutbah lainnya</td><td>Fardu kifayah</td></tr>
+          <tr><td>Media</td><td>Lisan, perbuatan, tulisan</td><td>Lisan secara langsung</td><td>Lisan, tulisan, media digital</td></tr>
+          <tr><td>Sifat hubungan</td><td>Paling luas — mencakup khutbah dan tablig</td><td>Bagian khusus dari dakwah</td><td>Bagian dari dakwah, fokus pada penyampaian</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Dengan demikian, <strong>dakwah adalah istilah yang paling luas</strong>. Khutbah dan tablig merupakan bentuk atau bagian dari dakwah. Setiap khutbah pasti dakwah, tetapi tidak semua dakwah berbentuk khutbah.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="kartu" id="m8">
+    <h2 class="bab"><span class="nomor-bab">8</span>Dakwah ala Ahlussunnah wal Jama'ah Asy'ariyah</h2>
+    <p>Ahlussunnah wal Jama'ah adalah golongan yang mengikuti sunah Nabi saw. dan jalan para sahabat. Dalam bidang akidah, mayoritas umat Islam Indonesia mengikuti <strong>Imam Abu al-Hasan al-Asy'ari</strong> (w. 324 H) dan <strong>Imam Abu Mansur al-Maturidi</strong>; dalam fikih mengikuti salah satu <strong>mazhab empat</strong>, khususnya <strong>Imam asy-Syafi'i</strong>; dan dalam tasawuf mengikuti <strong>Imam al-Junaid al-Baghdadi</strong> serta <strong>Imam al-Gazali</strong>.</p>
+
+    <div class="aswaja">
+      <h3>Empat karakter dakwah Aswaja</h3>
+      <ul class="isi" style="color:#EAF6EE">
+        <li><strong>Tawassuth</strong> (moderat) — mengambil jalan tengah, tidak ekstrem kanan maupun kiri.</li>
+        <li><strong>Tawazun</strong> (seimbang) — menyeimbangkan dalil naqli dan akal, urusan dunia dan akhirat, hak Allah dan hak sesama manusia.</li>
+        <li><strong>I'tidal</strong> (tegak lurus) — berlaku adil dan proporsional, tidak berat sebelah.</li>
+        <li><strong>Tasamuh</strong> (toleran) — menghargai perbedaan, baik perbedaan mazhab sesama muslim maupun perbedaan agama.</li>
+      </ul>
+      <div class="dalil">
+        <p class="arab">وَكَذٰلِكَ جَعَلْنٰكُمْ اُمَّةً وَّسَطًا لِّتَكُوْنُوْا شُهَدَآءَ عَلَى النَّاسِ وَيَكُوْنَ الرَّسُوْلُ عَلَيْكُمْ شَهِيْدًا</p>
+        <p class="terjemah">"Dan demikian pula Kami telah menjadikan kamu (umat Islam) umat pertengahan agar kamu menjadi saksi atas (perbuatan) manusia dan agar Rasul (Muhammad) menjadi saksi atas (perbuatan) kamu."</p>
+        <p class="sumber">QS. Al-Baqarah [2]: 143</p>
+      </div>
+    </div>
+
+    <h3>Prinsip yang dijaga dalam berdakwah</h3>
+    <ol class="isi">
+      <li><strong>Tidak mudah mengafirkan (takfir) dan membidahkan sesama muslim.</strong> Imam al-Gazali mengingatkan agar seorang muslim menahan diri dari mengafirkan ahli kiblat selama mereka masih mengucapkan dua kalimat syahadat dan tidak mengingkari perkara yang sudah pasti dalam agama.</li>
+      <li><strong>Menghormati perbedaan mazhab dalam masalah furu' (cabang).</strong> Perbedaan pendapat ulama dalam masalah cabang adalah rahmat, bukan alasan untuk bermusuhan.</li>
+      <li><strong>Mendahulukan kemaslahatan dan menolak kerusakan</strong>, sesuai kaidah fikih <span style="font-family:Amiri,serif">دَرْءُ الْمَفَاسِدِ مُقَدَّمٌ عَلٰى جَلْبِ الْمَصَالِحِ</span> — "menolak kerusakan didahulukan atas menarik kemaslahatan."</li>
+      <li><strong>Memelihara tradisi yang baik.</strong> Kaidah yang masyhur: <span style="font-family:Amiri,serif">اَلْمُحَافَظَةُ عَلَى الْقَدِيْمِ الصَّالِحِ وَالْاَخْذُ بِالْجَدِيْدِ الْاَصْلَحِ</span> — "menjaga tradisi lama yang baik dan mengambil hal baru yang lebih baik."</li>
+      <li><strong>Menjaga persatuan umat dan keutuhan bangsa</strong>, karena cinta tanah air adalah bagian dari menjaga agama.</li>
+    </ol>
+
+    <h3>Teladan Walisongo di Nusantara</h3>
+    <p>Islam masuk ke Indonesia, termasuk ke tanah Jawa, tanpa peperangan. Para Walisongo berdakwah dengan pendekatan budaya: melalui kesenian, gamelan, wayang, tembang, perdagangan, pendidikan pesantren, dan pernikahan. Mereka tidak menghapus budaya lokal secara total, melainkan mengisinya dengan nilai tauhid. Inilah wujud nyata dakwah <em>bil-hikmah</em> dan <em>rahmatan lil 'alamin</em> yang perlu diteruskan generasi hari ini.</p>
+
+    <div class="dalil">
+      <p class="arab">خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ وَاَعْرِضْ عَنِ الْجَاهِلِيْنَ</p>
+      <p class="terjemah">"Jadilah engkau pemaaf dan suruhlah orang mengerjakan yang makruf, serta berpalinglah dari orang-orang bodoh."</p>
+      <p class="sumber">QS. Al-A'raf [7]: 199</p>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="kartu" id="m9">
+    <h2 class="bab"><span class="nomor-bab">9</span>Praktik Menyusun Teks Khutbah</h2>
+
+    <h3>a. Langkah penyusunan</h3>
+    <ol class="isi">
+      <li>Menentukan tema yang relevan, misalnya "Islam Rahmatan lil 'Alamin dalam Kehidupan Bertetangga".</li>
+      <li>Mengumpulkan bahan: ayat Al-Qur'an, hadis sahih, pendapat ulama, dan contoh peristiwa nyata.</li>
+      <li>Menyusun kerangka: pembuka, isi, penutup.</li>
+      <li>Mengembangkan kerangka menjadi teks utuh dengan bahasa yang lugas dan mudah dipahami.</li>
+      <li>Memastikan lima rukun khutbah terpenuhi pada tempatnya.</li>
+      <li>Memperkirakan durasi — cukup 10 sampai 15 menit untuk khutbah pertama.</li>
+      <li>Berlatih membaca dengan intonasi yang jelas dan tidak monoton.</li>
+    </ol>
+
+    <h3>b. Contoh mukadimah khutbah pertama</h3>
+    <div class="dalil">
+      <p class="arab">اَلْحَمْدُ لِلّٰهِ الَّذِيْٓ اَرْسَلَ رَسُوْلَهٗ رَحْمَةً لِّلْعٰلَمِيْنَ. اَشْهَدُ اَنْ لَّآ اِلٰهَ اِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيْكَ لَهٗ، وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُوْلُهٗ. اَللّٰهُمَّ صَلِّ وَسَلِّمْ عَلٰى سَيِّدِنَا مُحَمَّدٍ وَّعَلٰىٓ اٰلِهٖ وَصَحْبِهٖٓ اَجْمَعِيْنَ. اَمَّا بَعْدُ، فَيَآ اَيُّهَا النَّاسُ اِتَّقُوا اللّٰهَ حَقَّ تُقَاتِهٖ وَلَا تَمُوْتُنَّ اِلَّا وَاَنْتُمْ مُّسْلِمُوْنَ</p>
+      <p class="terjemah">"Segala puji bagi Allah yang telah mengutus Rasul-Nya sebagai rahmat bagi seluruh alam. Aku bersaksi bahwa tiada tuhan selain Allah semata, tiada sekutu bagi-Nya, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, limpahkanlah selawat dan salam kepada junjungan kami Nabi Muhammad, keluarganya, dan seluruh sahabatnya. Amma ba'du: wahai manusia, bertakwalah kepada Allah dengan sebenar-benar takwa, dan janganlah kalian mati kecuali dalam keadaan muslim."</p>
+      <p class="sumber">Mukadimah yang memuat rukun 1, 2, 3, dan 4 sekaligus</p>
+    </div>
+
+    <h3>c. Kerangka isi khutbah bertema rahmatan lil 'alamin</h3>
+    <div class="tabel-bungkus">
+      <table>
+        <thead><tr><th>Bagian</th><th>Isi</th></tr></thead>
+        <tbody>
+          <tr><td>Pembuka</td><td>Hamdalah, dua kalimat syahadat, selawat, wasiat takwa, dan pembacaan QS. Al-Anbiya' [21]: 107</td></tr>
+          <tr><td>Isi bagian 1</td><td>Menjelaskan makna rahmatan lil 'alamin: rahmat bagi sesama muslim, nonmuslim, hewan, tumbuhan, dan lingkungan</td></tr>
+          <tr><td>Isi bagian 2</td><td>Bukti sejarah: Piagam Madinah, pembebasan Makkah tanpa balas dendam, dakwah Walisongo dengan budaya</td></tr>
+          <tr><td>Isi bagian 3</td><td>Tantangan hari ini: ujaran kebencian di media sosial, hoaks, perundungan, sikap merasa paling benar</td></tr>
+          <tr><td>Isi bagian 4</td><td>Ajakan konkret: menjaga lisan dan jari, menghormati tetangga, memilah informasi sebelum membagikannya</td></tr>
+          <tr><td>Penutup khutbah I</td><td>Kesimpulan singkat dan doa penutup serta <span style="font-family:Amiri,serif">بَارَكَ اللّٰهُ لِيْ وَلَكُمْ فِى الْقُرْاٰنِ الْعَظِيْمِ</span></td></tr>
+          <tr><td>Khutbah II</td><td>Hamdalah, syahadat, selawat, wasiat takwa, lalu doa untuk kaum mukminin dan mukminat (rukun kelima), ditutup dengan QS. An-Nahl [16]: 90</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="catatan"><strong>Tips:</strong> gunakan satu ayat utama dan satu hadis utama sebagai tulang punggung khutbah. Terlalu banyak dalil justru membuat pesan kabur dan jamaah sulit mengingat inti pesannya.</div>
+  </div>
+
+  <!-- 10 -->
+  <div class="kartu" id="m10">
+    <h2 class="bab"><span class="nomor-bab">10</span>Hikmah dan Pembiasaan Sikap</h2>
+    <ul class="isi">
+      <li>Terjaganya ajaran Islam dari generasi ke generasi.</li>
+      <li>Tumbuhnya masyarakat yang saling menasihati dalam kebaikan dan kesabaran.</li>
+      <li>Terhindarnya umat dari kerusakan moral dan perpecahan.</li>
+      <li>Meningkatnya kualitas diri dai, sebab ia harus lebih dahulu mengamalkan.</li>
+      <li>Terwujudnya wajah Islam yang ramah sehingga orang lain simpati kepada Islam.</li>
+    </ul>
+
+    <h3>Pembiasaan bagi pelajar</h3>
+    <ul class="isi">
+      <li>Mulai dari diri sendiri: jujur, disiplin, dan menjaga lisan di sekolah.</li>
+      <li>Menyampaikan kebaikan lewat media sosial dengan konten yang sopan dan benar.</li>
+      <li>Menyimak khutbah Jumat dengan tenang dan mencatat intisarinya.</li>
+      <li>Menolak ajakan bergabung dengan kelompok yang gemar mengafirkan sesama muslim.</li>
+      <li>Mengecek kebenaran informasi keagamaan sebelum membagikannya.</li>
+      <li>Berlatih berbicara di depan umum melalui kegiatan Rohis atau kultum kelas.</li>
+    </ul>
+    <div style="text-align:center;margin-top:10px">
+      <button class="btn btn-outline" data-goto="ringkasan">Baca ringkasan</button>
+      <button class="btn" data-goto="kuis">Uji dengan kuis</button>
+    </div>
+  </div>
+</section>
+<!-- ===== RINGKASAN ===== -->
+<section class="panel" id="p-ringkasan">
+  <div class="judul-bab">
+    <h1>Ringkasan Materi</h1>
+    <p>Intisari satu bab untuk mengulang cepat sebelum kuis dan evaluasi.</p>
+  </div>
+
+  <div class="kartu">
+    <h3>Tiga istilah kunci</h3>
+    <div class="peta">
+      <div class="peta-item"><h4>Dakwah</h4><p>Mengajak manusia ke jalan Allah. Pelakunya dai. Bebas waktu, tempat, dan media. Hukumnya fardu kifayah.</p></div>
+      <div class="peta-item"><h4>Khutbah</h4><p>Pidato keagamaan dengan rukun dan syarat baku, terikat waktu dan tempat. Pelakunya khatib.</p></div>
+      <div class="peta-item"><h4>Tablig</h4><p>Menyampaikan ajaran Islam secara utuh tanpa menambah atau mengurangi. Pelakunya mubalig.</p></div>
+    </div>
+    <p style="margin-top:6px">Hubungannya: dakwah adalah lingkaran terbesar; khutbah dan tablig berada di dalamnya.</p>
+  </div>
+
+  <div class="kartu">
+    <h3>Dalil yang wajib diingat</h3>
+    <div class="tabel-bungkus">
+      <table>
+        <thead><tr><th>Dalil</th><th>Kandungan</th></tr></thead>
+        <tbody>
+          <tr><td>QS. An-Nahl [16]: 125</td><td>Tiga metode dakwah: hikmah, mau'izah hasanah, mujadalah billati hiya ahsan</td></tr>
+          <tr><td>QS. Ali 'Imran [3]: 104</td><td>Perintah amar makruf nahi mungkar; dasar hukum fardu kifayah</td></tr>
+          <tr><td>QS. Ali 'Imran [3]: 159</td><td>Dakwah harus lemah lembut, tidak kasar</td></tr>
+          <tr><td>QS. Ali 'Imran [3]: 102</td><td>Ayat wasiat takwa dalam khutbah</td></tr>
+          <tr><td>QS. Fussilat [41]: 33</td><td>Keutamaan orang yang menyeru kepada Allah</td></tr>
+          <tr><td>QS. Al-Ma'idah [5]: 67</td><td>Perintah tablig kepada Rasulullah saw.</td></tr>
+          <tr><td>QS. Al-Anbiya' [21]: 107</td><td>Islam rahmatan lil 'alamin</td></tr>
+          <tr><td>QS. Taha [20]: 44</td><td>Perintah berkata lemah lembut (qaulan layyina)</td></tr>
+          <tr><td>QS. Al-Baqarah [2]: 256</td><td>Tidak ada paksaan dalam beragama</td></tr>
+          <tr><td>QS. Al-Baqarah [2]: 143</td><td>Umat Islam sebagai ummatan wasatan — dasar tawassuth</td></tr>
+          <tr><td>HR. al-Bukhari</td><td>Ballighu 'anni walau ayah — sampaikan dariku walau satu ayat</td></tr>
+          <tr><td>HR. Muslim</td><td>Tiga tingkatan mengubah kemungkaran: tangan, lisan, hati</td></tr>
+          <tr><td>HR. al-Bukhari &amp; Muslim</td><td>Permudah, jangan persulit; beri kabar gembira, jangan membuat lari</td></tr>
+          <tr><td>HR. Muslim</td><td>Panjang salat dan pendek khutbah adalah tanda kefakihan</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="kartu">
+    <h3>Rukun khutbah Jumat (mazhab Syafi'i)</h3>
+    <ol class="isi">
+      <li>Memuji Allah pada kedua khutbah.</li>
+      <li>Selawat kepada Nabi saw. pada kedua khutbah.</li>
+      <li>Wasiat takwa pada kedua khutbah.</li>
+      <li>Membaca ayat Al-Qur'an pada salah satu khutbah.</li>
+      <li>Doa untuk kaum mukminin pada khutbah kedua.</li>
+    </ol>
+    <p><strong>Jembatan ingatan:</strong> <em>Pu-Se-Was-Yat-Do</em> — Puji, Selawat, Wasiat takwa, aYat, Doa.</p>
+  </div>
+
+  <div class="kartu">
+    <h3>Syarat khutbah yang sering ditanyakan</h3>
+    <ul class="isi">
+      <li>Setelah masuk waktu Zuhur dan sebelum salat Jumat.</li>
+      <li>Khatib berdiri bila mampu, serta duduk di antara dua khutbah.</li>
+      <li>Suci dari hadas dan najis, menutup aurat.</li>
+      <li>Berkesinambungan (muwalah) dan terdengar jamaah.</li>
+      <li>Rukunnya dilafalkan dalam bahasa Arab.</li>
+    </ul>
+  </div>
+
+  <div class="kartu">
+    <h3>Empat karakter Aswaja dalam berdakwah</h3>
+    <div class="peta">
+      <div class="peta-item"><h4>Tawassuth</h4><p>Moderat, tidak ekstrem.</p></div>
+      <div class="peta-item"><h4>Tawazun</h4><p>Seimbang antara naqli dan akal, dunia dan akhirat.</p></div>
+      <div class="peta-item"><h4>I'tidal</h4><p>Tegak lurus dan adil.</p></div>
+      <div class="peta-item"><h4>Tasamuh</h4><p>Toleran terhadap perbedaan.</p></div>
+    </div>
+    <p>Akidah Asy'ariyah dan Maturidiyah, fikih mazhab empat (terutama Syafi'i), tasawuf al-Junaid dan al-Gazali. Tidak gemar mengafirkan sesama muslim, menghargai tradisi baik, dan menjaga persatuan.</p>
+  </div>
+</section>
+
+<!-- ===== PROYEK ===== -->
+<section class="panel" id="p-proyek">
+  <div class="judul-bab">
+    <h1>Tugas Proyek</h1>
+    <p>Tiga proyek untuk menerapkan dan membiasakan sikap menebarkan Islam yang santun dan damai.</p>
+  </div>
+
+  <div class="proyek">
+    <div class="proyek-head">
+      <span>Proyek 1 · Individu · 1 minggu</span>
+      <h3>Menyusun teks khutbah Jumat</h3>
+    </div>
+    <div class="proyek-body">
+      <p><strong>Tujuan:</strong> menyusun teks khutbah bertema nilai-nilai Islam <em>rahmatan lil 'alamin</em> yang memenuhi lima rukun khutbah.</p>
+      <h4>Langkah kerja</h4>
+      <ol class="isi">
+        <li>Pilih satu subtema, misalnya: menjaga lisan di media sosial, menghormati tetangga berbeda agama, merawat lingkungan, atau menolak perundungan.</li>
+        <li>Kumpulkan satu ayat utama dan satu hadis utama beserta terjemahnya.</li>
+        <li>Susun kerangka: mukadimah, isi (3-4 poin), penutup, dan khutbah kedua.</li>
+        <li>Tulis teks lengkap sepanjang 700-1.000 kata, ditulis tangan atau diketik.</li>
+        <li>Tandai dengan stabilo bagian yang merupakan rukun khutbah 1 sampai 5.</li>
+        <li>Rekam video pembacaan khutbah pertama maksimal 7 menit.</li>
+      </ol>
+      <h4>Rubrik penilaian</h4>
+      <div class="tabel-bungkus">
+        <table>
+          <thead><tr><th>Aspek</th><th>Bobot</th></tr></thead>
+          <tbody>
+            <tr><td>Kelengkapan lima rukun khutbah</td><td>30%</td></tr>
+            <tr><td>Ketepatan dalil dan terjemahnya</td><td>25%</td></tr>
+            <tr><td>Kesesuaian isi dengan tema rahmatan lil 'alamin</td><td>20%</td></tr>
+            <tr><td>Struktur dan kerapian bahasa</td><td>15%</td></tr>
+            <tr><td>Penampilan dalam rekaman</td><td>10%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="proyek">
+    <div class="proyek-head">
+      <span>Proyek 2 · Kelompok 4-5 orang · 2 minggu</span>
+      <h3>Kampanye dakwah digital yang santun</h3>
+    </div>
+    <div class="proyek-body">
+      <p><strong>Tujuan:</strong> mempraktikkan dakwah <em>bil-qalam</em> dan <em>bil-hal</em> melalui media yang akrab dengan pelajar.</p>
+      <h4>Langkah kerja</h4>
+      <ol class="isi">
+        <li>Tentukan satu isu nyata di sekolah: hoaks di grup kelas, ujaran kebencian, perundungan, atau sampah plastik.</li>
+        <li>Rancang kampanye berupa tiga poster digital dan satu video pendek berdurasi 60-90 detik.</li>
+        <li>Sertakan minimal satu ayat atau hadis beserta terjemah yang relevan pada tiap karya.</li>
+        <li>Pastikan tidak ada kalimat yang menyudutkan pihak, kelompok, atau agama tertentu.</li>
+        <li>Publikasikan di mading sekolah atau akun resmi Rohis, lalu catat tanggapan yang muncul.</li>
+        <li>Susun laporan singkat dua halaman: latar belakang, proses, hasil, dan refleksi kelompok.</li>
+      </ol>
+      <h4>Rubrik penilaian</h4>
+      <div class="tabel-bungkus">
+        <table>
+          <thead><tr><th>Aspek</th><th>Bobot</th></tr></thead>
+          <tbody>
+            <tr><td>Ketepatan dalil dan pesan dakwah</td><td>25%</td></tr>
+            <tr><td>Kesantunan bahasa dan visual</td><td>25%</td></tr>
+            <tr><td>Kreativitas dan kualitas karya</td><td>20%</td></tr>
+            <tr><td>Kerja sama kelompok</td><td>15%</td></tr>
+            <tr><td>Laporan dan refleksi</td><td>15%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="proyek">
+    <div class="proyek-head">
+      <span>Proyek 3 · Kelompok · 1 minggu</span>
+      <h3>Observasi pelaksanaan khutbah Jumat</h3>
+    </div>
+    <div class="proyek-body">
+      <p><strong>Tujuan:</strong> menganalisis penerapan ketentuan khutbah secara langsung di masjid sekitar tempat tinggal.</p>
+      <h4>Langkah kerja</h4>
+      <ol class="isi">
+        <li>Minta izin kepada takmir masjid dan jelaskan tujuan observasi.</li>
+        <li>Amati satu pelaksanaan khutbah Jumat dengan lembar pengamatan berisi: kesesuaian waktu, posisi khatib, duduk di antara dua khutbah, kelima rukun, durasi, tema, dan adab jamaah.</li>
+        <li>Wawancarai khatib atau takmir dengan tiga pertanyaan, antara lain cara beliau memilih tema agar tetap menyejukkan.</li>
+        <li>Bandingkan hasil pengamatan dengan ketentuan pada materi sub-bab 5.</li>
+        <li>Susun laporan dua sampai tiga halaman dan presentasikan selama 10 menit.</li>
+      </ol>
+      <div class="catatan"><strong>Adab observasi:</strong> observasi bukan mencari-cari kesalahan khatib. Tulis temuan dengan bahasa yang menghormati, dan diskusikan perbedaan pendapat mazhab dengan guru sebelum menyimpulkan.</div>
+      <h4>Rubrik penilaian</h4>
+      <div class="tabel-bungkus">
+        <table>
+          <thead><tr><th>Aspek</th><th>Bobot</th></tr></thead>
+          <tbody>
+            <tr><td>Kelengkapan data pengamatan</td><td>30%</td></tr>
+            <tr><td>Ketajaman analisis terhadap ketentuan khutbah</td><td>30%</td></tr>
+            <tr><td>Adab dan etika selama observasi</td><td>20%</td></tr>
+            <tr><td>Kualitas presentasi</td><td>20%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KUIS ===== -->
+<section class="panel" id="p-kuis">
+  <div class="judul-bab">
+    <h1>Kuis Bertingkat</h1>
+    <p>Lima level, masing-masing lima soal. Selesaikan satu level untuk membuka pembahasannya.</p>
+  </div>
+  <div id="kuisMenu"></div>
+  <div id="kuisMain" class="sembunyi"></div>
+</section>
+
+<!-- ===== LATIHAN ===== -->
+<section class="panel" id="p-latihan">
+  <div class="judul-bab">
+    <h1>Soal Latihan</h1>
+    <p>Sepuluh soal berlatih. Jawaban dan pembahasan muncul langsung setiap kali kamu memilih.</p>
+  </div>
+  <div class="kartu" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div><strong>Benar: <span id="latBenar">0</span></strong> dari <span id="latJawab">0</span> soal yang dikerjakan</div>
+    <button class="btn btn-outline btn-kecil" id="latUlang">Ulangi latihan</button>
+  </div>
+  <div id="latihanBox"></div>
+</section>
+
+<!-- ===== EVALUASI ===== -->
+<section class="panel" id="p-evaluasi">
+  <div class="judul-bab">
+    <h1>Evaluasi Akhir</h1>
+    <p>Sepuluh soal dengan penilaian otomatis. Jawaban dinilai setelah semua soal terisi.</p>
+  </div>
+  <div id="evalBox"></div>
+</section>
+
+  </main>
+
+  <footer class="kaki">
+    <span class="arab">وَاللّٰهُ اَعْلَمُ بِالصَّوَابِ</span>
+    Media Pembelajaran PAI · SMA Negeri 1 Pronojiwo · Manhaj Ahlussunnah wal Jama'ah Asy'ariyah
+  </footer>
+</div>
+
+<script>
+/* ================= PENYIMPANAN AMAN ================= */
+const simpan = {
+  ambil(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  taruh(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
+  hapus(k){ try { localStorage.removeItem(k); } catch(e){} }
+};
+
+/* ================= DATA TADARUS ================= */
+const AYAT = [
+  { arab:"اُدْعُ اِلٰى سَبِيْلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ وَجَادِلْهُمْ بِالَّتِيْ هِيَ اَحْسَنُ ۗ اِنَّ رَبَّكَ هُوَ اَعْلَمُ بِمَنْ ضَلَّ عَنْ سَبِيْلِهٖ وَهُوَ اَعْلَمُ بِالْمُهْتَدِيْنَ",
+    terjemah:"Serulah (manusia) ke jalan Tuhanmu dengan hikmah dan pengajaran yang baik, dan berdebatlah dengan mereka dengan cara yang lebih baik. Sesungguhnya Tuhanmu, Dialah yang lebih mengetahui siapa yang sesat dari jalan-Nya dan Dialah yang lebih mengetahui siapa yang mendapat petunjuk.",
+    sumber:"QS. An-Nahl [16]: 125" },
+  { arab:"وَلْتَكُنْ مِّنْكُمْ اُمَّةٌ يَّدْعُوْنَ اِلَى الْخَيْرِ وَيَأْمُرُوْنَ بِالْمَعْرُوْفِ وَيَنْهَوْنَ عَنِ الْمُنْكَرِ ۗ وَاُولٰۤىِٕكَ هُمُ الْمُفْلِحُوْنَ",
+    terjemah:"Dan hendaklah di antara kamu ada segolongan orang yang menyeru kepada kebajikan, menyuruh (berbuat) yang makruf, dan mencegah dari yang mungkar. Dan mereka itulah orang-orang yang beruntung.",
+    sumber:"QS. Ali 'Imran [3]: 104" },
+  { arab:"وَمَنْ اَحْسَنُ قَوْلًا مِّمَّنْ دَعَآ اِلَى اللّٰهِ وَعَمِلَ صَالِحًا وَّقَالَ اِنَّنِيْ مِنَ الْمُسْلِمِيْنَ",
+    terjemah:"Dan siapakah yang lebih baik perkataannya daripada orang yang menyeru kepada Allah dan mengerjakan kebajikan serta berkata, 'Sungguh, aku termasuk orang-orang muslim (yang berserah diri)?'",
+    sumber:"QS. Fussilat [41]: 33" },
+  { arab:"وَمَآ اَرْسَلْنٰكَ اِلَّا رَحْمَةً لِّلْعٰلَمِيْنَ",
+    terjemah:"Dan Kami tidak mengutus engkau (Muhammad) melainkan untuk (menjadi) rahmat bagi seluruh alam.",
+    sumber:"QS. Al-Anbiya' [21]: 107" },
+  { arab:"فَبِمَا رَحْمَةٍ مِّنَ اللّٰهِ لِنْتَ لَهُمْ ۚ وَلَوْ كُنْتَ فَظًّا غَلِيْظَ الْقَلْبِ لَانْفَضُّوْا مِنْ حَوْلِكَ ۖ فَاعْفُ عَنْهُمْ وَاسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى الْاَمْرِ",
+    terjemah:"Maka berkat rahmat Allah engkau (Muhammad) berlaku lemah lembut terhadap mereka. Sekiranya engkau bersikap keras dan berhati kasar, tentulah mereka menjauhkan diri dari sekitarmu. Karena itu maafkanlah mereka dan mohonkanlah ampunan untuk mereka, dan bermusyawarahlah dengan mereka dalam urusan itu.",
+    sumber:"QS. Ali 'Imran [3]: 159" },
+  { arab:"وَالْعَصْرِۙ اِنَّ الْاِنْسَانَ لَفِيْ خُسْرٍۙ اِلَّا الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ وَتَوَاصَوْا بِالْحَقِّ ەۙ وَتَوَاصَوْا بِالصَّبْرِ",
+    terjemah:"Demi masa. Sungguh, manusia berada dalam kerugian, kecuali orang-orang yang beriman dan mengerjakan kebajikan serta saling menasihati untuk kebenaran dan saling menasihati untuk kesabaran.",
+    sumber:"QS. Al-'Asr [103]: 1-3" },
+  { arab:"يٰٓاَيُّهَا الرَّسُوْلُ بَلِّغْ مَآ اُنْزِلَ اِلَيْكَ مِنْ رَّبِّكَ ۗ وَاِنْ لَّمْ تَفْعَلْ فَمَا بَلَّغْتَ رِسَالَتَهٗ ۗ وَاللّٰهُ يَعْصِمُكَ مِنَ النَّاسِ",
+    terjemah:"Wahai Rasul! Sampaikanlah apa yang diturunkan Tuhanmu kepadamu. Jika tidak engkau lakukan (apa yang diperintahkan itu) berarti engkau tidak menyampaikan amanat-Nya. Dan Allah memelihara engkau dari (gangguan) manusia.",
+    sumber:"QS. Al-Ma'idah [5]: 67" },
+  { arab:"وَكَذٰلِكَ جَعَلْنٰكُمْ اُمَّةً وَّسَطًا لِّتَكُوْنُوْا شُهَدَآءَ عَلَى النَّاسِ وَيَكُوْنَ الرَّسُوْلُ عَلَيْكُمْ شَهِيْدًا",
+    terjemah:"Dan demikian pula Kami telah menjadikan kamu (umat Islam) umat pertengahan agar kamu menjadi saksi atas (perbuatan) manusia dan agar Rasul (Muhammad) menjadi saksi atas (perbuatan) kamu.",
+    sumber:"QS. Al-Baqarah [2]: 143" }
+];
+
+/* ================= DATA KUIS 5 LEVEL ================= */
+const LEVEL = [
+  { nama:"Mengenal Istilah", info:"Pengertian dakwah, khutbah, dan tablig", soal:[
+    { t:"Secara bahasa, kata <em>dakwah</em> berasal dari <span class='arab'>دَعَا - يَدْعُوْ - دَعْوَةً</span> yang berarti…", o:["Menyampaikan dan meneruskan","Mengajak, menyeru, atau memanggil","Berpidato di atas mimbar","Menasihati dengan tulisan"], b:1, p:"Dakwah berarti mengajak, menyeru, atau memanggil manusia kepada jalan Allah." },
+    { t:"Orang yang menyampaikan khutbah disebut…", o:["Dai","Mubalig","Khatib","Imam"], b:2, p:"Pelaku khutbah adalah khatib; pelaku dakwah adalah dai; pelaku tablig adalah mubalig." },
+    { t:"Secara bahasa, <em>tablig</em> berarti…", o:["Menyampaikan","Mengajak","Berdebat","Menasihati"], b:0, p:"Tablig berasal dari <em>ballagha - yuballighu - tablighan</em> yang berarti menyampaikan." },
+    { t:"Di antara ketiga istilah berikut, yang cakupan maknanya paling luas adalah…", o:["Khutbah","Tablig","Dakwah","Ketiganya sama luas"], b:2, p:"Dakwah adalah istilah terluas. Khutbah dan tablig merupakan bagian dari dakwah." },
+    { t:"Menyampaikan ajaran Islam melalui artikel, poster, dan konten media sosial termasuk dakwah…", o:["Bil-lisan","Bil-hal","Bil-qalam","Bil-yad"], b:2, p:"Dakwah bil-qalam adalah dakwah melalui tulisan, termasuk tulisan digital." }
+  ]},
+  { nama:"Menelusuri Dalil", info:"Ayat dan hadis tentang dakwah", soal:[
+    { t:"Ayat yang memuat tiga metode dakwah — hikmah, mau'izah hasanah, dan mujadalah — adalah…", o:["QS. Ali 'Imran [3]: 104","QS. An-Nahl [16]: 125","QS. Al-Ma'idah [5]: 67","QS. Fussilat [41]: 33"], b:1, p:"Tiga metode dakwah disebutkan dalam QS. An-Nahl [16]: 125." },
+    { t:"Sabda Nabi saw. <span class='arab'>بَلِّغُوْا عَنِّيْ وَلَوْ اٰيَةً</span> mengandung perintah untuk…", o:["Menyampaikan ajaran Islam meski sedikit","Menghafal seluruh Al-Qur'an","Berkhutbah setiap hari Jumat","Berdebat dengan penentang Islam"], b:0, p:"Hadis riwayat al-Bukhari ini memerintahkan menyampaikan ajaran Islam walau hanya satu ayat, sesuai kemampuan." },
+    { t:"Kandungan pokok QS. Al-Anbiya' [21]: 107 adalah…", o:["Kewajiban salat Jumat","Nabi Muhammad saw. diutus sebagai rahmat bagi seluruh alam","Larangan berdebat","Keutamaan bersedekah"], b:1, p:"Ayat ini menjadi dasar utama konsep Islam rahmatan lil 'alamin." },
+    { t:"Menurut hadis riwayat Muslim, tingkatan paling lemah dalam mengubah kemungkaran adalah dengan…", o:["Tangan","Lisan","Hati","Harta"], b:2, p:"Nabi saw. menyebut mengingkari dengan hati sebagai selemah-lemah iman." },
+    { t:"QS. Ali 'Imran [3]: 104 umumnya dijadikan dasar bahwa hukum berdakwah adalah…", o:["Fardu 'ain bagi setiap muslim","Fardu kifayah","Sunah muakkad","Mubah"], b:1, p:"Lafal <em>minkum</em> dipahami sebagian mufasir sebagai <em>lit-tab'idh</em> sehingga melahirkan hukum fardu kifayah." }
+  ]},
+  { nama:"Ketentuan Khutbah", info:"Syarat, rukun, dan sunah khutbah Jumat", soal:[
+    { t:"Menurut mazhab Syafi'i, jumlah rukun khutbah Jumat ada…", o:["Tiga","Empat","Lima","Enam"], b:2, p:"Lima rukun: memuji Allah, selawat, wasiat takwa, membaca ayat Al-Qur'an, dan doa untuk kaum mukminin." },
+    { t:"Rukun khutbah yang hanya dilakukan pada khutbah kedua adalah…", o:["Membaca hamdalah","Membaca selawat","Mendoakan kaum mukminin dan mukminat","Berwasiat takwa"], b:2, p:"Doa untuk kaum mukminin dan mukminat khusus dibaca pada khutbah kedua." },
+    { t:"Waktu pelaksanaan khutbah Jumat yang benar adalah…", o:["Sebelum masuk waktu Zuhur","Setelah masuk waktu Zuhur dan sebelum salat Jumat","Setelah salat Jumat selesai","Bebas kapan saja pada hari Jumat"], b:1, p:"Khutbah Jumat dilaksanakan setelah masuk waktu Zuhur dan mendahului salat Jumat." },
+    { t:"Berikut yang termasuk <strong>sunah</strong> khutbah, bukan syarat, adalah…", o:["Suci dari hadas dan najis","Mengucapkan salam ketika naik mimbar","Duduk di antara dua khutbah","Berkesinambungan antar-rukun"], b:1, p:"Mengucapkan salam saat naik mimbar termasuk sunah. Pilihan lain merupakan syarat khutbah." },
+    { t:"Jamaah yang menegur temannya dengan berkata 'diamlah' ketika khatib sedang berkhutbah dinilai Nabi saw. sebagai…", o:["Mendapat pahala besar","Telah berbuat sia-sia (lagha)","Melakukan amar makruf","Membatalkan salat Jumat orang lain"], b:1, p:"HR. al-Bukhari dan Muslim menyebut perbuatan itu sebagai <em>lagha</em> atau sia-sia, sehingga jamaah harus benar-benar diam menyimak." }
+  ]},
+  { nama:"Metode dan Etika", info:"Cara berdakwah yang santun", soal:[
+    { t:"Metode dakwah yang tepat untuk menghadapi orang yang masih ragu dan suka berdiskusi adalah…", o:["Bil-hikmah","Mau'izah hasanah","Mujadalah billati hiya ahsan","Bil-yad"], b:2, p:"Mujadalah billati hiya ahsan adalah berdiskusi dengan cara paling baik, bertujuan mencari kebenaran, bukan kemenangan." },
+    { t:"Sabda Nabi saw. <span class='arab'>يَسِّرُوْا وَلَا تُعَسِّرُوْا</span> mengajarkan dai untuk…", o:["Mempermudah, bukan mempersulit","Mempercepat penyampaian","Memilih jamaah yang pandai","Memperbanyak dalil"], b:0, p:"Dai hendaknya memberi kemudahan dan kabar gembira, bukan membuat orang lari menjauh." },
+    { t:"Kegiatan kerja bakti membersihkan masjid dan menyantuni tetangga yang sakit termasuk dakwah…", o:["Bil-lisan","Bil-hal","Bil-qalam","Bil-mal saja"], b:1, p:"Dakwah bil-hal adalah dakwah melalui perbuatan nyata dan keteladanan." },
+    { t:"Dalam QS. Taha [20]: 44, Nabi Musa a.s. dan Nabi Harun a.s. diperintahkan berdakwah kepada Fir'aun dengan…", o:["Perkataan yang keras","Perkataan yang lemah lembut","Mukjizat terlebih dahulu","Peperangan"], b:1, p:"Perintahnya adalah <em>qaulan layyina</em>, perkataan yang lemah lembut, agar ia sadar atau takut." },
+    { t:"Ketika dakwahmu ditolak seseorang, sikap yang sesuai tuntunan adalah…", o:["Memaksa agar ia menerima","Mengumumkan keburukannya","Bersabar dan mendoakannya, karena hidayah milik Allah","Memutus hubungan dengannya"], b:2, p:"QS. Al-Baqarah [2]: 256 menegaskan tidak ada paksaan dalam beragama. Tugas dai menyampaikan, hidayah adalah hak Allah." }
+  ]},
+  { nama:"Aswaja dan Penerapan", info:"Manhaj Asy'ariyah dan kasus nyata", soal:[
+    { t:"Dalam bidang akidah, Ahlussunnah wal Jama'ah yang dianut mayoritas muslim Indonesia mengikuti manhaj…", o:["Imam Abu al-Hasan al-Asy'ari dan Imam al-Maturidi","Imam asy-Syafi'i dan Imam Malik","Imam al-Junaid dan Imam al-Gazali","Imam al-Bukhari dan Imam Muslim"], b:0, p:"Akidah Aswaja mengikuti al-Asy'ari dan al-Maturidi; fikih mengikuti mazhab empat; tasawuf mengikuti al-Junaid dan al-Gazali." },
+    { t:"Karakter Aswaja yang berarti menyeimbangkan dalil naqli dengan akal serta urusan dunia dengan akhirat adalah…", o:["Tawassuth","Tawazun","I'tidal","Tasamuh"], b:1, p:"Tawazun berarti seimbang dan proporsional dalam menimbang berbagai hal." },
+    { t:"Kaidah <span class='arab'>دَرْءُ الْمَفَاسِدِ مُقَدَّمٌ عَلٰى جَلْبِ الْمَصَالِحِ</span> berarti…", o:["Menarik kemaslahatan lebih utama daripada menolak kerusakan","Menolak kerusakan didahulukan atas menarik kemaslahatan","Kemaslahatan umum mengalahkan kemaslahatan pribadi","Adat dapat dijadikan hukum"], b:1, p:"Kaidah ini menjadi dasar agar amar makruf nahi mungkar tidak justru melahirkan kerusakan yang lebih besar." },
+    { t:"Seorang teman membagikan video ceramah yang mengafirkan kelompok muslim lain karena berbeda cara ibadah. Sikapmu yang paling sesuai manhaj Aswaja adalah…", o:["Ikut membagikan agar banyak yang tahu","Membalas dengan konten yang mengafirkan balik","Tidak membagikan, lalu mengajak teman berdiskusi baik-baik dan bertanya kepada guru","Mendiamkan dan memutus pertemanan"], b:2, p:"Aswaja menghindari takfir terhadap sesama ahli kiblat serta menyelesaikan perbedaan dengan diskusi santun dan bimbingan ahli ilmu." },
+    { t:"Walisongo berdakwah melalui wayang, gamelan, tembang, dan pendidikan pesantren. Pendekatan ini paling tepat disebut penerapan metode…", o:["Mujadalah","Bil-hikmah","Amar makruf bil-yad","Tablig murni"], b:1, p:"Pendekatan budaya yang menyesuaikan cara dengan kondisi masyarakat merupakan wujud dakwah bil-hikmah." }
+  ]}
+];
+
+/* ================= SOAL LATIHAN ================= */
+const LATIHAN = [
+  { t:"Hukum berdakwah bagi umat Islam pada dasarnya adalah…", o:["Fardu 'ain","Fardu kifayah","Sunah","Mubah"], b:1, p:"Jumhur ulama menyatakan fardu kifayah, dan menjadi fardu 'ain bila hanya dirinya yang mampu atau mengetahui." },
+  { t:"Berikut yang <strong>bukan</strong> syarat seorang khatib Jumat adalah…", o:["Suci dari hadas dan najis","Menutup aurat","Hafal tiga puluh juz Al-Qur'an","Memahami rukun dan syarat khutbah"], b:2, p:"Hafal tiga puluh juz bukan syarat. Khatib cukup fasih membaca ayat yang ia bacakan." },
+  { t:"Pernyataan yang benar tentang hubungan ketiga istilah adalah…", o:["Setiap dakwah pasti khutbah","Setiap khutbah pasti dakwah","Tablig lebih luas daripada dakwah","Khutbah dan dakwah tidak berkaitan"], b:1, p:"Dakwah adalah istilah terluas, sehingga setiap khutbah pasti termasuk dakwah, tetapi tidak sebaliknya." },
+  { t:"Bahasa yang digunakan untuk melafalkan rukun khutbah Jumat menurut mazhab Syafi'i adalah…", o:["Bahasa Arab","Bahasa daerah","Bahasa Indonesia","Bebas"], b:0, p:"Rukun khutbah dilafalkan dalam bahasa Arab, sedangkan nasihat dan uraiannya boleh memakai bahasa yang dipahami jamaah." },
+  { t:"Metode dakwah berupa nasihat yang baik dan menyentuh hati, cocok untuk masyarakat umum, disebut…", o:["Hikmah","Mau'izah hasanah","Mujadalah","Munazarah"], b:1, p:"Mau'izah hasanah adalah pengajaran yang baik, disampaikan dengan bahasa sederhana dan penuh kasih sayang." },
+  { t:"Hadis <span class='arab'>اِنَّ طُوْلَ صَلَاةِ الرَّجُلِ وَقِصَرَ خُطْبَتِهٖ مَئِنَّةٌ مِّنْ فِقْهِهٖ</span> menganjurkan khatib untuk…", o:["Memperpanjang khutbah dan memendekkan salat","Memendekkan khutbah dan memanjangkan salat","Mempercepat keduanya","Memperbanyak kisah dalam khutbah"], b:1, p:"Khutbah yang ringkas dan salat yang berkualitas menandakan kedalaman pemahaman agama seseorang." },
+  { t:"Sikap <em>tasamuh</em> dalam berdakwah ditunjukkan oleh perilaku…", o:["Memaksa orang lain mengikuti mazhab kita","Menghormati perbedaan mazhab dan keyakinan orang lain","Menolak berdiskusi dengan yang berbeda","Menghindari semua tradisi lokal"], b:1, p:"Tasamuh berarti toleran: menghargai perbedaan tanpa harus mengorbankan keyakinan sendiri." },
+  { t:"Seorang mubalig menemukan pesan berantai berisi hadis yang belum jelas sumbernya. Tindakan yang benar adalah…", o:["Langsung menyebarkan karena isinya baik","Memeriksa kesahihannya lebih dahulu kepada ahli atau kitab rujukan","Menghapus tanpa memberi tahu siapa pun","Menambahkan kalimat sendiri agar lebih meyakinkan"], b:1, p:"QS. Al-Hujurat [49]: 6 memerintahkan tabayun. Berdusta atas nama Nabi saw. adalah dosa besar." },
+  { t:"Dakwah bil-hal yang paling tepat dilakukan pelajar di lingkungan sekolah adalah…", o:["Menceramahi teman setiap istirahat","Menjadi teladan dalam kejujuran, kebersihan, dan kedisiplinan","Menempel banyak poster tanpa contoh nyata","Menegur guru di depan kelas"], b:1, p:"Dakwah bil-hal adalah dakwah melalui perbuatan nyata dan keteladanan sehari-hari." },
+  { t:"Kaidah Aswaja <span class='arab'>اَلْمُحَافَظَةُ عَلَى الْقَدِيْمِ الصَّالِحِ وَالْاَخْذُ بِالْجَدِيْدِ الْاَصْلَحِ</span> berarti…", o:["Menolak semua hal baru","Meninggalkan seluruh tradisi lama","Menjaga tradisi lama yang baik dan mengambil hal baru yang lebih baik","Mengambil yang paling mudah saja"], b:2, p:"Kaidah ini menjadi dasar sikap Aswaja dalam menyikapi budaya dan perkembangan zaman." }
+];
+
+/* ================= SOAL EVALUASI ================= */
+const EVALUASI = [
+  { t:"Kegiatan mengajak manusia kepada jalan Allah dengan cara yang baik agar bahagia dunia dan akhirat adalah pengertian…", o:["Khutbah","Tablig","Dakwah","Nasihat"], b:2, p:"Itulah definisi dakwah secara istilah." },
+  { t:"Rukun khutbah Jumat yang wajib ada pada khutbah pertama maupun kedua adalah…", o:["Membaca ayat Al-Qur'an","Berwasiat takwa","Mendoakan kaum mukminin","Membaca surah al-Ikhlas"], b:1, p:"Memuji Allah, selawat, dan wasiat takwa wajib pada kedua khutbah. Ayat cukup pada salah satunya, doa khusus pada khutbah kedua." },
+  { t:"Berikut yang termasuk perbedaan mendasar antara khutbah dan tablig adalah…", o:["Khutbah terikat rukun dan waktu tertentu, tablig tidak","Khutbah boleh dilakukan siapa saja, tablig hanya ulama","Tablig wajib, khutbah sunah","Tablig hanya boleh secara lisan"], b:0, p:"Ciri khas khutbah adalah keterikatan pada rukun, syarat, waktu, dan tempat tertentu." },
+  { t:"Perintah <span class='arab'>وَجَادِلْهُمْ بِالَّتِيْ هِيَ اَحْسَنُ</span> menunjukkan bahwa dalam berdebat seorang dai harus…", o:["Memenangkan perdebatan dengan segala cara","Menggunakan cara yang paling baik dan tidak merendahkan lawan bicara","Menghindari semua bentuk diskusi","Mengajak lawan bicara ke pengadilan"], b:1, p:"Tujuan mujadalah adalah menemukan kebenaran dengan adab, bukan mempermalukan lawan bicara." },
+  { t:"Amar makruf nahi mungkar dengan tangan pada dasarnya menjadi wewenang…", o:["Setiap individu muslim","Pemerintah atau pemegang otoritas","Anak muda yang kuat","Tokoh masyarakat mana pun"], b:1, p:"Ulama menegaskan bahwa perubahan dengan tangan adalah wewenang penguasa agar tidak terjadi main hakim sendiri dan kerusakan yang lebih besar." },
+  { t:"Berikut yang <strong>bukan</strong> termasuk syarat sah khutbah Jumat adalah…", o:["Dilaksanakan setelah masuk waktu Zuhur","Khatib berdiri jika mampu","Khatib memegang tongkat","Duduk di antara dua khutbah"], b:2, p:"Memegang tongkat termasuk sunah menurut sebagian ulama Syafi'iyah, bukan syarat sah." },
+  { t:"Sikap seorang pelajar ketika melihat unggahan media sosial yang menghina agama lain adalah…", o:["Ikut berkomentar kasar","Membagikan ulang agar viral","Tidak menyebarkan dan melaporkannya, lalu menyampaikan pandangan Islam dengan santun","Mendiamkan dan membenarkan isinya"], b:2, p:"Islam melarang mencela sesembahan orang lain (QS. Al-An'am [6]: 108) dan mengedepankan dakwah yang santun." },
+  { t:"Prinsip Aswaja yang berarti mengambil jalan tengah, tidak ekstrem ke kanan maupun ke kiri, adalah…", o:["Tawassuth","Tasamuh","I'tidal","Tawakal"], b:0, p:"Tawassuth berarti moderat, sejalan dengan konsep <em>ummatan wasatan</em> dalam QS. Al-Baqarah [2]: 143." },
+  { t:"Urutan yang benar dalam menyusun teks khutbah adalah…", o:["Menulis teks utuh, lalu menentukan tema","Menentukan tema, mengumpulkan dalil, menyusun kerangka, mengembangkan teks","Mengumpulkan dalil, menghafal, lalu naik mimbar","Menyusun penutup, isi, lalu pembuka"], b:1, p:"Penyusunan khutbah dimulai dari tema, pengumpulan bahan, kerangka, baru pengembangan teks utuh." },
+  { t:"Kesimpulan yang paling tepat tentang dakwah Walisongo di Nusantara adalah…", o:["Islam disebarkan melalui penaklukan militer","Islam disebarkan dengan menghapus seluruh budaya lokal","Islam disebarkan secara damai melalui budaya, perdagangan, dan pendidikan","Islam hanya disebarkan di kalangan bangsawan"], b:2, p:"Pendekatan damai dan kultural inilah bukti nyata penerapan Islam rahmatan lil 'alamin di Indonesia." }
+];
+
+/* ================= NAVIGASI ================= */
+const panels = () => document.querySelectorAll('.panel');
+function buka(nama){
+  panels().forEach(p => p.classList.toggle('aktif', p.id === 'p'+'-'+nama));
+  document.querySelectorAll('#menuScroll button').forEach(b => b.classList.toggle('aktif', b.dataset.panel === nama));
+  const aktifBtn = document.querySelector('#menuScroll button.aktif');
+  if(aktifBtn) aktifBtn.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('menuScroll').addEventListener('click', e => {
+  const b = e.target.closest('button[data-panel]');
+  if(b) buka(b.dataset.panel);
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-goto]');
+  if(b) buka(b.dataset.goto);
+});
+
+/* ================= LOGIN ================= */
+const SANDI = "123456";
+function masuk(nama, kelas){
+  document.getElementById('chipUser').textContent = nama + " · " + kelas;
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  simpan.taruh('mp_nama', nama);
+  simpan.taruh('mp_kelas', kelas);
+}
+document.getElementById('formLogin').addEventListener('submit', e => {
+  e.preventDefault();
+  const nama = document.getElementById('inNama').value.trim();
+  const kelas = document.getElementById('inKelas').value.trim();
+  const sandi = document.getElementById('inSandi').value;
+  const err = document.getElementById('errLogin');
+  if(!nama || !kelas){ err.textContent = "Nama dan kelas belum diisi."; return; }
+  if(sandi !== SANDI){ err.textContent = "Password salah. Tanyakan kembali kepada guru pengampu."; return; }
+  err.textContent = "";
+  masuk(nama, kelas);
+});
+document.getElementById('btnKeluar').addEventListener('click', () => {
+  simpan.hapus('mp_nama'); simpan.hapus('mp_kelas');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login').style.display = 'flex';
+  document.getElementById('inSandi').value = '';
+});
+(function sesiLama(){
+  const n = simpan.ambil('mp_nama'), k = simpan.ambil('mp_kelas');
+  if(n && k) masuk(n, k);
+})();
+
+/* ================= TADARUS ================= */
+let iAyat = 0;
+function gambarTadarus(){
+  const a = AYAT[iAyat];
+  document.getElementById('tadarusBox').innerHTML =
+    '<div class="dalil" style="margin-top:0">' +
+      '<p class="arab">' + a.arab + '</p>' +
+      '<p class="terjemah">"' + a.terjemah + '"</p>' +
+      '<p class="sumber">' + a.sumber + '</p>' +
+    '</div>' +
+    '<div class="tadarus-nav">' +
+      '<button class="btn btn-outline btn-kecil" id="ayatMundur">Sebelumnya</button>' +
+      '<span class="tadarus-hitung">Ayat ' + (iAyat+1) + ' dari ' + AYAT.length + '</span>' +
+      '<button class="btn btn-kecil" id="ayatMaju">Berikutnya</button>' +
+    '</div>';
+  document.getElementById('ayatMundur').onclick = () => { iAyat = (iAyat - 1 + AYAT.length) % AYAT.length; gambarTadarus(); };
+  document.getElementById('ayatMaju').onclick = () => { iAyat = (iAyat + 1) % AYAT.length; gambarTadarus(); };
+}
+gambarTadarus();
+
+/* ================= UTILITAS SOAL ================= */
+const HURUF = ['A','B','C','D'];
+function kartuSoal(soal, nomor, label){
+  let h = '<div class="soal" data-soal="' + nomor + '">';
+  h += '<div class="soal-nomor">' + label + ' ' + nomor + '</div>';
+  h += '<div class="soal-teks">' + soal.t + '</div>';
+  soal.o.forEach((op, i) => {
+    h += '<button class="opsi" data-opsi="' + i + '"><span class="huruf">' + HURUF[i] + '</span>' + op + '</button>';
+  });
+  h += '<div class="pembahasan sembunyi"></div></div>';
+  return h;
+}
+function predikat(n){
+  if(n >= 90) return ["Sangat baik", "Masya Allah, pertahankan. Kamu siap membantu teman yang masih kesulitan."];
+  if(n >= 80) return ["Baik", "Sudah bagus. Baca ulang bagian yang masih keliru agar makin mantap."];
+  if(n >= 70) return ["Cukup", "Perbanyak mengulang ringkasan materi, terutama rukun dan syarat khutbah."];
+  return ["Perlu bimbingan", "Silakan pelajari ulang materi lengkap, lalu kerjakan kembali."];
+}
+
+/* ================= KUIS BERTINGKAT ================= */
+let skorLevel = {};
+try { skorLevel = JSON.parse(simpan.ambil('mp_skorLevel') || '{}'); } catch(e){ skorLevel = {}; }
+
+function gambarMenuKuis(){
+  let h = '<div class="level-grid">';
+  LEVEL.forEach((lv, i) => {
+    const s = skorLevel[i];
+    const lulus = (s !== undefined && s >= 4);
+    h += '<div class="level-kartu' + (lulus ? ' lulus' : '') + '" data-level="' + i + '" role="button" tabindex="0">' +
+      '<div class="lv">Level ' + (i+1) + '</div>' +
+      '<h4>' + lv.nama + '</h4>' +
+      '<p>' + lv.info + '</p>' +
+      '<div class="skor">' + (s === undefined ? 'Belum dikerjakan' : 'Skor terakhir ' + s + '/5') + '</div>' +
+      '</div>';
+  });
+  h += '</div>';
+  h += '<div class="kartu"><h3>Cara mengerjakan</h3><p style="margin:0">Pilih satu level, jawab lima soal secara berurutan. Setiap jawaban langsung diberi pembahasan. Skor minimal 4 dari 5 untuk menandai level sebagai tuntas.</p></div>';
+  document.getElementById('kuisMenu').innerHTML = h;
+  document.querySelectorAll('.level-kartu').forEach(k => {
+    const jalan = () => mulaiLevel(parseInt(k.dataset.level, 10));
+    k.onclick = jalan;
+    k.onkeydown = e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); jalan(); } };
+  });
+}
+
+let kuisAktif = { lv:0, i:0, benar:0 };
+function mulaiLevel(lv){
+  kuisAktif = { lv:lv, i:0, benar:0 };
+  document.getElementById('kuisMenu').classList.add('sembunyi');
+  document.getElementById('kuisMain').classList.remove('sembunyi');
+  gambarSoalKuis();
+}
+function gambarSoalKuis(){
+  const lv = LEVEL[kuisAktif.lv];
+  const s = lv.soal[kuisAktif.i];
+  const persen = (kuisAktif.i / lv.soal.length) * 100;
+  const box = document.getElementById('kuisMain');
+  box.innerHTML =
+    '<div class="kartu" style="margin-bottom:14px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">' +
+        '<strong>Level ' + (kuisAktif.lv+1) + ' — ' + lv.nama + '</strong>' +
+        '<button class="btn btn-outline btn-kecil" id="kembaliLevel">Kembali ke daftar level</button>' +
+      '</div>' +
+      '<div class="bar"><i style="width:' + persen + '%"></i></div>' +
+      '<div style="font-size:.85rem;color:var(--tinta-lembut)">Soal ' + (kuisAktif.i+1) + ' dari ' + lv.soal.length + ' · Benar sementara: ' + kuisAktif.benar + '</div>' +
+    '</div>' +
+    kartuSoal(s, kuisAktif.i + 1, 'Soal');
+  document.getElementById('kembaliLevel').onclick = tutupKuis;
+
+  const kartu = box.querySelector('.soal');
+  kartu.querySelectorAll('.opsi').forEach(btn => {
+    btn.onclick = () => {
+      const pilih = parseInt(btn.dataset.opsi, 10);
+      const benar = pilih === s.b;
+      if(benar) kuisAktif.benar++;
+      kartu.querySelectorAll('.opsi').forEach((o, idx) => {
+        o.disabled = true;
+        if(idx === s.b) o.classList.add('benar');
+        else if(idx === pilih) o.classList.add('salah');
+      });
+      const pem = kartu.querySelector('.pembahasan');
+      pem.classList.remove('sembunyi');
+      pem.classList.toggle('keliru', !benar);
+      pem.innerHTML = '<strong>' + (benar ? 'Jawaban benar.' : 'Jawaban belum tepat. Kunci: ' + HURUF[s.b] + '.') + '</strong><br>' + s.p +
+        '<div style="margin-top:10px"><button class="btn btn-kecil" id="lanjutKuis">' +
+        (kuisAktif.i + 1 < LEVEL[kuisAktif.lv].soal.length ? 'Soal berikutnya' : 'Lihat hasil level') + '</button></div>';
+      document.getElementById('lanjutKuis').onclick = () => {
+        kuisAktif.i++;
+        if(kuisAktif.i < LEVEL[kuisAktif.lv].soal.length) gambarSoalKuis();
+        else hasilLevel();
+      };
+    };
+  });
+}
+function hasilLevel(){
+  const lv = kuisAktif.lv, benar = kuisAktif.benar;
+  const sebelum = skorLevel[lv];
+  if(sebelum === undefined || benar > sebelum){ skorLevel[lv] = benar; simpan.taruh('mp_skorLevel', JSON.stringify(skorLevel)); }
+  const nilai = Math.round(benar / 5 * 100);
+  const [pred, saran] = predikat(nilai);
+  const adaLanjut = lv + 1 < LEVEL.length;
+  document.getElementById('kuisMain').innerHTML =
+    '<div class="hasil">' +
+      '<div class="nilai">' + nilai + '</div>' +
+      '<div class="predikat">' + pred + '</div>' +
+      '<div class="detail">Level ' + (lv+1) + ' — benar ' + benar + ' dari 5 soal.<br>' + saran + '</div>' +
+      '<div class="tombol">' +
+        '<button class="btn btn-outline btn-kecil" id="ulangLevel">Ulangi level ini</button>' +
+        (adaLanjut ? '<button class="btn btn-kecil" id="levelLanjut">Lanjut ke level ' + (lv+2) + '</button>' : '<button class="btn btn-kecil" data-goto="latihan">Lanjut ke soal latihan</button>') +
+        '<button class="btn btn-emas btn-kecil" id="keDaftar">Daftar level</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('ulangLevel').onclick = () => mulaiLevel(lv);
+  document.getElementById('keDaftar').onclick = tutupKuis;
+  const bl = document.getElementById('levelLanjut');
+  if(bl) bl.onclick = () => mulaiLevel(lv + 1);
+}
+function tutupKuis(){
+  document.getElementById('kuisMain').classList.add('sembunyi');
+  document.getElementById('kuisMenu').classList.remove('sembunyi');
+  gambarMenuKuis();
+}
+gambarMenuKuis();
+
+/* ================= LATIHAN ================= */
+let latBenar = 0, latJawab = 0;
+function gambarLatihan(){
+  latBenar = 0; latJawab = 0;
+  document.getElementById('latBenar').textContent = 0;
+  document.getElementById('latJawab').textContent = 0;
+  const box = document.getElementById('latihanBox');
+  box.innerHTML = LATIHAN.map((s, i) => kartuSoal(s, i + 1, 'Latihan')).join('');
+  box.querySelectorAll('.soal').forEach((kartu, i) => {
+    const s = LATIHAN[i];
+    kartu.querySelectorAll('.opsi').forEach(btn => {
+      btn.onclick = () => {
+        const pilih = parseInt(btn.dataset.opsi, 10);
+        const benar = pilih === s.b;
+        latJawab++; if(benar) latBenar++;
+        document.getElementById('latBenar').textContent = latBenar;
+        document.getElementById('latJawab').textContent = latJawab;
+        kartu.querySelectorAll('.opsi').forEach((o, idx) => {
+          o.disabled = true;
+          if(idx === s.b) o.classList.add('benar');
+          else if(idx === pilih) o.classList.add('salah');
+        });
+        const pem = kartu.querySelector('.pembahasan');
+        pem.classList.remove('sembunyi');
+        pem.classList.toggle('keliru', !benar);
+        pem.innerHTML = '<strong>' + (benar ? 'Tepat.' : 'Kunci jawaban: ' + HURUF[s.b] + '.') + '</strong> ' + s.p;
+      };
+    });
+  });
+}
+document.getElementById('latUlang').onclick = gambarLatihan;
+gambarLatihan();
+
+/* ================= EVALUASI ================= */
+let jawabanEval = new Array(EVALUASI.length).fill(null);
+function gambarEvaluasi(){
+  jawabanEval = new Array(EVALUASI.length).fill(null);
+  const box = document.getElementById('evalBox');
+  box.innerHTML =
+    '<div class="kartu">' +
+      '<h3 style="margin-bottom:4px">Petunjuk</h3>' +
+      '<p style="margin:0;font-size:.9rem">Kerjakan seluruh soal, lalu tekan tombol <em>Koreksi jawaban</em>. Nilai dihitung otomatis dan pembahasan ditampilkan setelah dikoreksi.</p>' +
+      '<div class="bar"><i id="evalBar" style="width:0%"></i></div>' +
+      '<div style="font-size:.85rem;color:var(--tinta-lembut)">Terisi: <span id="evalTerisi">0</span> dari ' + EVALUASI.length + ' soal</div>' +
+    '</div>' +
+    '<div id="evalSoal">' + EVALUASI.map((s, i) => kartuSoal(s, i + 1, 'Soal')).join('') + '</div>' +
+    '<div class="aksi-bawah">' +
+      '<button class="btn btn-outline btn-kecil" id="evalReset">Kosongkan jawaban</button>' +
+      '<button class="btn" id="evalKoreksi">Koreksi jawaban</button>' +
+    '</div>' +
+    '<div id="evalHasil" style="margin-top:18px"></div>';
+
+  box.querySelectorAll('#evalSoal .soal').forEach((kartu, i) => {
+    kartu.querySelectorAll('.opsi').forEach(btn => {
+      btn.onclick = () => {
+        kartu.querySelectorAll('.opsi').forEach(o => o.classList.remove('dipilih'));
+        btn.classList.add('dipilih');
+        jawabanEval[i] = parseInt(btn.dataset.opsi, 10);
+        const terisi = jawabanEval.filter(v => v !== null).length;
+        document.getElementById('evalTerisi').textContent = terisi;
+        document.getElementById('evalBar').style.width = (terisi / EVALUASI.length * 100) + '%';
+      };
+    });
+  });
+  document.getElementById('evalReset').onclick = gambarEvaluasi;
+  document.getElementById('evalKoreksi').onclick = koreksiEvaluasi;
+}
+function koreksiEvaluasi(){
+  const kosong = jawabanEval.findIndex(v => v === null);
+  const hasil = document.getElementById('evalHasil');
+  if(kosong !== -1){
+    hasil.innerHTML = '<div class="catatan" style="border-color:#E39B9B;background:#FBE9E7"><strong>Belum lengkap.</strong> Soal nomor ' + (kosong + 1) + ' masih kosong. Isi semua soal sebelum dikoreksi.</div>';
+    const target = document.querySelectorAll('#evalSoal .soal')[kosong];
+    if(target) target.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  let benar = 0;
+  document.querySelectorAll('#evalSoal .soal').forEach((kartu, i) => {
+    const s = EVALUASI[i], pilih = jawabanEval[i], tepat = pilih === s.b;
+    if(tepat) benar++;
+    kartu.querySelectorAll('.opsi').forEach((o, idx) => {
+      o.disabled = true;
+      o.classList.remove('dipilih');
+      if(idx === s.b) o.classList.add('benar');
+      else if(idx === pilih) o.classList.add('salah');
+    });
+    const pem = kartu.querySelector('.pembahasan');
+    pem.classList.remove('sembunyi');
+    pem.classList.toggle('keliru', !tepat);
+    pem.innerHTML = '<strong>' + (tepat ? 'Benar.' : 'Salah. Kunci: ' + HURUF[s.b] + '.') + '</strong> ' + s.p;
+  });
+  const nilai = benar * 10;
+  const [pred, saran] = predikat(nilai);
+  const nama = simpan.ambil('mp_nama') || '-';
+  const kelas = simpan.ambil('mp_kelas') || '-';
+  const tgl = new Date().toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'});
+  hasil.innerHTML =
+    '<div class="hasil">' +
+      '<div class="nilai">' + nilai + '</div>' +
+      '<div class="predikat">' + pred + '</div>' +
+      '<div class="detail">' + nama + ' · Kelas ' + kelas + ' · ' + tgl + '<br>Benar ' + benar + ' dari ' + EVALUASI.length + ' soal.<br>' + saran + '</div>' +
+      '<div class="tombol">' +
+        '<button class="btn btn-outline btn-kecil" id="evalUlang">Kerjakan ulang</button>' +
+        '<button class="btn btn-emas btn-kecil" id="evalCetak">Cetak hasil</button>' +
+        '<button class="btn btn-kecil" data-goto="materi">Buka materi lagi</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('evalUlang').onclick = () => { gambarEvaluasi(); window.scrollTo({top:0, behavior:'smooth'}); };
+  document.getElementById('evalCetak').onclick = () => window.print();
+  hasil.scrollIntoView({behavior:'smooth', block:'center'});
+  simpan.taruh('mp_nilaiEval', String(nilai));
+}
+gambarEvaluasi();
+</script>
+
+</body>
+</html>
